@@ -18,10 +18,6 @@
     nnn # Terminal file manager
     google-chrome
  
-    # Development
-    nodejs
-    nodePackages.typescript
-    nodePackages.typescript-language-server
   ];
  
   # Editor
