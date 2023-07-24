@@ -17,50 +17,24 @@
         };
     };
 
-    outputs = inputs@{ self, nur, vim-plugins, nixpkgs, home-manager, hyprland, ... }: 
-        let
-            home-linux = { pkgs, lib, ... }:
-            {
-                nixpkgs.overlays = [ 
-                    nur.overlay
-                    vim-plugins.overlay 
-                ];
-
-                nixpkgs.config = {
-                    allowUnfree = true;
-                    allowUnfreePredicate = (_: true);
-                };
-               
-                programs.home-manager.enable = true;
-                home.stateVersion = "23.05";
-                home.homeDirectory = "/home/benjamin";
-
-                imports = [
-                    hyprland.homeManagerModules.default
-                    { wayland.windowManager.hyprland.enable = true; }
-                    .modules/hyprland
-                    .modules/nvim
-                    .modules/firefox
-                    .modules/dunst
-                    .modules/waybar
-                ];
-            };
-        in {
-
+    outputs = inputs@{ self, nur, vim-plugins, nixpkgs, home-manager, hyprland, ... }: {
         nixosConfigurations = {
             framework = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
-                modules = [ ./hosts/framework ];
-                # Required at least for hyprland
+    
+	        # Required at least for hyprland
                 specialArgs = { inherit inputs; }; 
+	
+		modules = [
+			./hosts/framework 
+			home-manager.nixosModules.home-manager
+			{ 
+				home-manager.useGlobalPkgs = true;
+				home-manager.useUserPackages = true;
+				home-manager.users.benjamin = import ./home.nix;
+			}
+		];
             };
-        };
-        homeConfigurations = {
-            framework = home-manager.lib.homeManagerConfiguration {
-                pkgs = nixpkgs.legacyPackages.x86_64-linux;
-                modules = [ home-linux ];
-            };
-
         };
     };
 }

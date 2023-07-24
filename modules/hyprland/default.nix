@@ -2,8 +2,8 @@
 
 { 
   imports = [
-    ../waybar.nix
-    ../dunst.nix
+    ../waybar
+    ../dunst
   ];
     
   //TODO extract  
