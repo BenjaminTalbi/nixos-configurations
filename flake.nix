@@ -11,13 +11,13 @@
             url = "github:hyprwm/contrib";
             inputs.nixpkgs.follows = "nixpkgs";
         };
-        vim-plugins = {
-            url = "path:./modules/nvim/plugins";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+        #vim-plugins = {
+        #    url = "path:./modules/nvim/plugins";
+        #    inputs.nixpkgs.follows = "nixpkgs";
+        #};
     };
 
-    outputs = inputs@{ self, nur, vim-plugins, nixpkgs, home-manager, hyprland, ... }: {
+    outputs = inputs@{ self, nur, nixpkgs, home-manager, hyprland, ... }: {
         nixosConfigurations = {
             framework = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
