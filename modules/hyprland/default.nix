@@ -5,7 +5,8 @@
     ../waybar.nix
     ../dunst.nix
   ];
-
+    
+  //TODO extract  
   home.packages = with pkgs; [ 
     playerctl 
     wl-clipboard 
