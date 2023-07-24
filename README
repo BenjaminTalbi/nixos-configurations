@@ -1,3 +1,4 @@
+Every file that needs to be added to the store HAS TO BE added in git!
 ```
 sudo ln -s ~/nixos-config/ /etc/nixos
 ```
