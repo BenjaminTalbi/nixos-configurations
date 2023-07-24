@@ -129,45 +129,13 @@
         "type": "github"
       }
     },
-    "nvim-sqls-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1684697500,
-        "narHash": "sha256-jKFut6NZAf/eIeIkY7/2EsjsIhvZQKCKAJzeQ6XSr0s=",
-        "owner": "nanotee",
-        "repo": "sqls.nvim",
-        "rev": "4b1274b5b44c48ce784aac23747192f5d9d26207",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nanotee",
-        "repo": "sqls.nvim",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
         "nixpkgs": "nixpkgs_2",
-        "nur": "nur",
-        "vim-plugins": "vim-plugins"
-      }
-    },
-    "vim-plugins": {
-      "inputs": {
-        "nvim-sqls-src": "nvim-sqls-src"
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-QP2hLlmFlQLlMI0zdOqYvq+ZfG7wRTXh8kqhL2WbK0Q=",
-        "path": "./modules/nvim/plugins",
-        "type": "path"
-      },
-      "original": {
-        "path": "./modules/nvim/plugins",
-        "type": "path"
+        "nur": "nur"
       }
     },
     "wlroots": {
