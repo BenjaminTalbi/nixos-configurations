@@ -1,25 +1,25 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 
 {
 
 	imports = [
 #		hyprland.homeManagerModules.default
+		./modules/hyprland
+		./modules/nvim
+		./modules/firefox
+		./modules/dunst
+		./modules/waybar
 		{ wayland.windowManager.hyprland.enable = true; }
-		.modules/hyprland
-		.modules/nvim
-		.modules/firefox
-		.modules/dunst
-		.modules/waybar
 	];
 
-#	nixpkgs = {
+	nixpkgs = {
 #		overlays = [ inputs.vim-plugins.overlay ];
-#		config = {
-#			allowUnfree = true;
-#			# Workaround for https://github.com/nix-community/home-manager/issues/2942
-#			allowUnfreePrdicate = (_: true);
-#		};
-#	};
+		config = {
+			allowUnfree = true;
+			# Workaround for https://github.com/nix-community/home-manager/issues/2942
+			allowUnfreePrdicate = (_: true);
+		};
+	};
 
 	home.packages = with pkgs; [
 		neofetch

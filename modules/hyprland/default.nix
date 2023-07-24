@@ -1,12 +1,9 @@
-{ config, pkgs, inputs, ...  }:
+{ config, pkgs, ...  }:
 
 { 
-  imports = [
-    ../waybar
-    ../dunst
-  ];
+  # imports = [ ];
     
-  //TODO extract  
+  #TODO extract  
   home.packages = with pkgs; [ 
     playerctl 
     wl-clipboard 
