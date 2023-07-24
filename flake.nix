@@ -21,8 +21,9 @@
         nixosConfigurations = {
             framework = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
+		# pkgs = nixpkgs.legacyPackages.x86_64-linux;
     
-	        # Required at least for hyprland
+	        # Required at least for hyprland and firefox
                 specialArgs = { inherit inputs; }; 
 	
 		modules = [
@@ -32,6 +33,7 @@
 				home-manager.useGlobalPkgs = true;
 				home-manager.useUserPackages = true;
 				home-manager.users.benjamin = import ./home.nix;
+				home-manager.extraSpecialArgs = { inherit inputs; };
 			}
 		];
             };

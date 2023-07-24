@@ -1,23 +1,21 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
 
 	imports = [
-#		hyprland.homeManagerModules.default
 		./modules/hyprland
 		./modules/nvim
 		./modules/firefox
 		./modules/dunst
 		./modules/waybar
-		{ wayland.windowManager.hyprland.enable = true; }
 	];
 
 	nixpkgs = {
-#		overlays = [ inputs.vim-plugins.overlay ];
+		# overlays = [ inputs.vim-plugins.overlay ];
 		config = {
 			allowUnfree = true;
 			# Workaround for https://github.com/nix-community/home-manager/issues/2942
-			allowUnfreePrdicate = (_: true);
+			# allowUnfreePredicate = (_: true);
 		};
 	};
 

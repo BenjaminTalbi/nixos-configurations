@@ -1,7 +1,10 @@
-{ config, pkgs, ...  }:
+# Since we import this module in home.nix we need to add { home-manager.extraSpecialArgs = { inherit inputs; }; } to the modules in flake.nix
+{ config, pkgs, inputs, ...  }:
 
-{ 
-  # imports = [ ];
+{
+  # Do not import the hyprland.homeManagerModules.default here or in home.nix
+  # Importing the module will give a infinite recursion error 
+  imports = [ ];
     
   #TODO extract  
   home.packages = with pkgs; [ 
