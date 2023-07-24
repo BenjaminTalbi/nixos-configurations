@@ -13,10 +13,7 @@
 	];
 
 	nixpkgs = {
-		overlays = [ 
-			inputs.nur.overlay
-			inputs.vim-plugins.overlay 
-		];
+#		overlays = [ inputs.vim-plugins.overlay ];
 		config = {
 			allowUnfree = true;
 			# Workaround for https://github.com/nix-community/home-manager/issues/2942
