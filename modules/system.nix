@@ -17,7 +17,7 @@
     xfce.thunar # GUI file manager
     nnn # Terminal file manager
     google-chrome
- 
+    pavucontrol
   ];
  
   # Editor

@@ -12,12 +12,19 @@
             harpoon
             telescope-nvim
             nvim-treesitter.withAllGrammars
-            lsp-zero-nvim
+            # lsp-zero-nvim
+            nvim-lspconfig
 
-            # Completions
-              cmp-nvim-lsp
-              nvim-cmp
-              luasnip
+            # lspconfig requirements 
+            vim-nix # File type and syntax highlighting.
+            luasnip
+            nvim-cmp
+            cmp_luasnip
+            cmp-nvim-lsp
+            nvim-lspconfig
+            fidget-nvim
+
+
               #cmp-buffer
               #cmp-path
               #cmp-nvim-lua
@@ -46,17 +53,19 @@
 #    type = "lua";
 #  }
         ];
+        # Extra packages like LSPs
         extraPackages = with pkgs; [
             tree-sitter
-                nodejs
-                nodePackages.bash-language-server
-                lua-language-server
-                nil
-                nixpkgs-fmt
-                nodePackages.typescript-language-server
-                nodePackages.vscode-langservers-extracted
-                ripgrep
-                fd
+            nodejs
+            nodePackages.bash-language-server
+            lua-language-server
+            nil
+            nixpkgs-fmt
+            nodePackages.typescript-language-server
+            nodePackages.vscode-langservers-extracted
+            ripgrep
+            fd
+            nil
         ];
     };
     xdg.configFile = {
