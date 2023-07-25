@@ -10,7 +10,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
     vim.keymap.set("n", "<leader>vj", function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set("n", "<leader>vk", function() vim.diagnostic.goto_prev() end, opts)
-    --	vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", opts)
+    vim.keymap.set("n", "<leader>dl", "<cmd>Telescope diagnostics<cr>", opts)
     vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
@@ -25,6 +25,18 @@ require('lspconfig').tsserver.setup {
 require('lspconfig').lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
+}
+
+require('lspconfig').nil_ls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    settings = {
+        ['nil'] = {
+            formatting = {
+                command = { "nixpkgs-fmt" },
+            }
+        }
+    }
 }
 
 vim.diagnostic.config({ virtual_text = true })
