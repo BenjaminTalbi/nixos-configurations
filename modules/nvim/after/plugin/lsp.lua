@@ -1,6 +1,7 @@
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 local on_attach = function(client, bufnr)
     local opts = { buffer = bufnr, remap = false }
-
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "gT", function() vim.lsp.buf.type_definition() end, opts)
     vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
@@ -17,16 +18,16 @@ local on_attach = function(client, bufnr)
 end
 
 require('lspconfig').tsserver.setup {
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = capabilities,
 }
 
 require('lspconfig').lua_ls.setup {
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = capabilities,
 }
 
-vim.diagnostic.config({
-    virtual_text = true
-})
+vim.diagnostic.config({ virtual_text = true })
 
 -- Setup tiny spinner while lsp is working
 -- require("fidget").setup {}
@@ -35,9 +36,9 @@ vim.diagnostic.config({
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 -- Setup nvim-cmp
 local cmp = require('cmp')
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
     snippet = {
-        -- REQUIRED - you must specify a snippet engine
         expand = function(args)
             require('luasnip').lsp_expand(args.body)
         end
@@ -45,39 +46,13 @@ cmp.setup({
     mapping = {
         ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
         ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-        ['<C-Space>'] = cmp.mapping.confirm({ select = true }),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ['<C-y>'] = cmp.mapping.complete()
-    }
+    },
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
+    }, {
+        { name = 'buffer' }
+    })
 })
--- local cmp_select = {behavior = cmp.SelectBehavior.Select}
--- local cmp_mappings = lsp.defaults.cmp_mappings({
--- 	['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
--- 	['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
--- 	['<C-Space>'] = cmp.mapping.confirm({ select = true }),
--- 	['<C-y>'] = cmp.mapping.complete()
--- })
--- local lsp = require('lsp-zero')
---
--- lsp.preset('recommended')
---
--- lsp.ensure_installed({
--- 	'tsserver',
--- })
---
---
--- --lsp.set_preferences({
--- --	sign_icons = {	}
--- --})
---
--- lsp.setup_nvim_cmp({
--- 	mapping = cmp_mappings
--- })
---
---
--- lsp.setup_servers({
---     'tsserver',
---     'eslint',
---     'nil'
--- })
--- lsp.setup()
---

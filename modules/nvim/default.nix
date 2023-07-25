@@ -23,11 +23,9 @@
             cmp-nvim-lsp
             nvim-lspconfig
             fidget-nvim
-
-
-              #cmp-buffer
-              #cmp-path
-              #cmp-nvim-lua
+            cmp-buffer
+            cmp-path
+            cmp-nvim-lua
 
 # To consider
 # gitsigns
