@@ -1,8 +1,9 @@
-{ config, pkgs, lib, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
-
+    
 	imports = [
+        inputs.hyprland.homeManagerModules.default
 		./modules/hyprland
 		./modules/nvim
 		./modules/firefox

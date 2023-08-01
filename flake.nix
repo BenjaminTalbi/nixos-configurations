@@ -1,6 +1,12 @@
 {
     description = "NixOS configuration";
 
+    nixConfig = {
+      substituters = [ "https://hyprland.cachix.org" ];
+
+      extra-trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+    };
+
     inputs = {
         nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
         nur.url = "github:nix-community/nur";
@@ -28,6 +34,8 @@
 	
 		modules = [
 			./hosts/framework 
+            hyprland.nixosModules.default
+            { programs.hyprland.enable = true; }
 			home-manager.nixosModules.home-manager
 			{ 
 				home-manager.useGlobalPkgs = true;
