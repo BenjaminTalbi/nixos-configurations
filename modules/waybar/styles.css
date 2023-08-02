@@ -46,10 +46,12 @@
 #waybar {
     background: transparent;
     color: @primary_blue;
+    font-family: "FiraCode Nerd Font";
+    font-size: 12px;
+}
+
+.modules-left, .modules-right {
     background-color: @base;
-    font-family: "Overpass Nerd Font";
-    font-size: 16px;
-    border-radius: 15px;
 }
 
 /* Every modules */
@@ -158,13 +160,14 @@
 }
 
 #workspaces button {
-    border-bottom: 3px solid @primary_blue_2;
+    /* border-bottom: 3px solid @primary_blue; */
+    color: #ffffff;
     margin-bottom: 0px;
     padding:0px;
 }
 
 #workspaces button.focused {
-    border-bottom: 3px solid  @primary_yellow;
+    /* border-bottom: 3px solid  @primary_yellow; */
     margin-bottom: 0px;
     padding-left:0;
 }

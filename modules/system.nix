@@ -11,13 +11,14 @@
   environment.systemPackages = with pkgs; [
     git # Flakes use Git to pull dependencies, so Git must be installed first.
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    curl
-    neofetch
+    wget # Common util
+    curl # Common util
+    neofetch # On NixOS btw
     xfce.thunar # GUI file manager
     nnn # Terminal file manager
-    google-chrome
-    pavucontrol
+    google-chrome # For web dev
+    pavucontrol # GUI for sound levels
+    brightnessctl # Control screen brightness
   ];
  
   # Editor
@@ -25,7 +26,10 @@
 
   # Fonts
   fonts = {
-    fonts = with pkgs; [];
+    fonts = with pkgs; [
+      (nerdfonts.override { fonts = [ "FiraCode" "IosevkaTerm" "Iosevka" "Meslo" ]; })
+      font-awesome
+    ];
     # enableDefaultFonts = false;
   };
 
