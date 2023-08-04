@@ -13,12 +13,6 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget # Common util
     curl # Common util
-    neofetch # On NixOS btw
-    xfce.thunar # GUI file manager
-    nnn # Terminal file manager
-    google-chrome # For web dev
-    pavucontrol # GUI for sound levels
-    brightnessctl # Control screen brightness
   ];
  
   # Editor

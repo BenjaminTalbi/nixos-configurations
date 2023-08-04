@@ -12,7 +12,6 @@
       harpoon
       telescope-nvim
       nvim-treesitter.withAllGrammars
-      # lsp-zero-nvim
       nvim-lspconfig
 
       # lspconfig requirements 

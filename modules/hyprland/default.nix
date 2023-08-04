@@ -14,6 +14,7 @@
     slurp
     inputs.hyprland-contrib.packages.x86_64-linux.grimblast
     wofi-emoji
+    hyprpaper
   ];
 
   programs.wofi.enable = true;
