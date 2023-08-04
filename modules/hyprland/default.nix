@@ -28,9 +28,10 @@
     "hypr/hyprpaper.conf" = {
       source = ./hyprpaper.conf;
     };
-    "hypr/wallpaper" = {
-      source = ./wallpaper;
+    "wallpaper" = {
+      source = ../../extras/wallpaper;
       recursive = true;
     };
   };
+
 }

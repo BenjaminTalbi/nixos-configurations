@@ -8,6 +8,7 @@
     ./modules/firefox
     ./modules/dunst
     ./modules/waybar
+    ./modules/terminal
   ];
 
   nixpkgs = {
@@ -41,23 +42,6 @@
 
     bottom
   ];
-
-  programs.starship = { enable = true; settings = { add_newline = false; }; };
-
-  programs.wezterm = { enable = true; };
-
-  programs.fish = {
-    enable = true;
-    interactiveShellInit = '' 
-			set fish_greeting # Disable greeting
-		'';
-    plugins = [
-      # import with nixpkgs
-      { name = "grc"; src = pkgs.fishPlugins.grc.src; }
-      { name = "done"; src = pkgs.fishPlugins.done.src; }
-      { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
-    ];
-  };
 
 
   home = {
