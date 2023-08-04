@@ -2,3 +2,19 @@ Every file that needs to be added to the store HAS TO BE added in git!
 ```
 sudo ln -s ~/nixos-config/ /etc/nixos
 ```
+
+
+TODO: 
+- waybar
+    - Fix crash on click on workspace
+    - Improve icons and maybe add back text
+    - Music widget
+    - Bold font?
+    - Slimmer bar?
+- Get bluetooth GUI
+- Bind media keys and F-Row keys of the laptop
+- Set Fish as default SHELL
+    - Init starship
+    - Manage SSH keys
+
+
