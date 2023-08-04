@@ -27,6 +27,9 @@
     # enableDefaultFonts = false;
   };
 
+  # Enable bluetooth
+  hardware.bluetooth.enable = true;
+
   # Enable sound with pipewire
   sound.enable = false;
   hardware.pulseaudio.enable = false;
@@ -54,6 +57,7 @@
       pulse.enable = true;
     };
     dbus.packages = [ pkgs.gcr ]; 	# Unsure what this is for TODO
+    blueman.enable = true;
   };
 
   # Set your time zone.

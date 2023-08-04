@@ -13,12 +13,13 @@
         modules-left = [ "wlr/workspaces" ];
         modules-center = [ ];
         modules-right = [
-          "clock"
           "disk"
           "wireplumber"
           "backlight"
           "battery"
           "network"
+          "bluetooth"
+          "clock"
           "tray"
         ];
         "wlr/workspaces" = {
@@ -83,7 +84,8 @@
         };
         disk = {
           interval = 120;
-          format = "{free}  ";
+          format = " ";
+          #format = "{free}  ";
         };
         network = {
           format-wifi = " ";
