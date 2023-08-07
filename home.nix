@@ -9,6 +9,7 @@
     ./modules/dunst
     ./modules/waybar
     ./modules/terminal
+    ./modules/gtk
   ];
 
   nixpkgs = {

@@ -11,10 +11,20 @@ TODO:
     - Music widget
     - Bold font?
     - Slimmer bar?
+    - Color current workspace
+    - CPU Temp and fan speeds
+- Shortcuts
+    - Add one for browser that either opens it or jumps to its workspace
+    - Also open browser in its workspace if it's empty
+    - Jump between last 2 workspace
+- Wofi
+    - Prettify it
 - Get bluetooth GUI
 - Bind media keys and F-Row keys of the laptop
 - Set Fish as default SHELL
     - Init starship
     - Manage SSH keys
-
+- Lock screen
+    - Fingerprint scan???
+- Login screen like on PC
 
