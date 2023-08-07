@@ -5,7 +5,7 @@
     enable = true;
     theme = {
       name = "Juno";
-      package = pkgs.juno-theme;
+      package = pkgs.dracula-theme;
     };
     iconTheme = {
       name = "Papirus-Dark";

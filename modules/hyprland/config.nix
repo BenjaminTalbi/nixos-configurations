@@ -55,8 +55,9 @@
       # gaps_out = 0
 
       #col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-      col.active_border = rgba(D65D0Eee) rgba(8EC07Cee) 45deg
-      col.inactive_border = rgba(A89984ee)
+      # TODO Extract for theming
+      col.active_border = rgba(cecacdee) 
+      col.inactive_border = rgba(524f67ee)
 
       layout = master
   }
