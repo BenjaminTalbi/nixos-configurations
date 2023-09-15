@@ -1,11 +1,10 @@
-
-@define-color base           #1e242f ;
-@define-color urgent         #b02c36 ;
-@define-color primary_orange #fe9000 ;
-@define-color primary_yellow #ffdd4a ;
-@define-color primary_red    #da1b2b ;
-@define-color primary_blue   #afd2e9 ;
-@define-color primary_blue_2 #6fadd6 ;
+@define-color base           #191724; /* Base */
+@define-color warning        #f6c177; /* Gold */
+@define-color modified       #ffdd4a; /* */
+@define-color critical       #eb6f92; /* Love */
+@define-color text           #e0def4; /* Text */
+@define-color disabled       #6e6a86; /* Muted */
+@define-color highlight      #ebbcba; /* Rose */
 
 @keyframes blink-warning {
     70% {
@@ -13,8 +12,7 @@
     }
 
     to {
-        color: white;
-        background-color: orange;
+        color: @warning;
     }
 }
 
@@ -24,8 +22,7 @@
     }
 
     to {
-        color: white;
-        background-color: red;
+        color: @critical;
     }
 }
 
@@ -38,16 +35,19 @@
     border: none;
     border-radius: 0;
     min-height: 0;
-    margin: 1px;
-        padding: 0;
+    margin: 1px ;
+    padding: 0;
 }
 
 /* The whole bar */
 #waybar {
     background-color: @base;
     /* background: transparent; */
-    color: @primary_blue;
-    font-family: "FiraCode Nerd Font";
+    color: @text;
+    /* font-family: "FiraCode Nerd Font"; */
+    /* font-family: "Mononoki Nerd Font"; */
+    /* font-family: "CodeNewRoman Nerd Font"; */
+    font-family: "Menli Nerd Font";
     font-size: 12px;
 }
 
@@ -56,24 +56,45 @@
 }
 
 /* Every modules */
-#battery,
-#clock,
 #backlight,
+#battery,
+#bluetooth,
+#cava,
+#clock,
 #cpu,
-#custom-keyboard-layout,
+#custom,
+#disk,
+#dwl,
+#gamemode,
+#group,
+#idle inhibitor,
+#image,
+#jack,
+#keyboard state,
+#language,
 #memory,
-#mode,
-#custom-weather,
+#mpd,
+#mpris,
 #network,
 #pulseaudio,
+#sndio,
+#river,
 #temperature,
-#tray,
-#idle_inhibitor,
-#custom-PBPbattery {
-    padding:0.5rem 0.6rem;
-    margin: 1px 0px;
-}
+#taskbar,
+#upower,
+#wireplumber,
+#workspaces,
+#user {
+    /*
+    margin: .25rem 0.5rem;
+    min-width: .3rem;
+    */
+    padding: .25rem 0.5rem;
+ }
 
+#tray {
+    margin-right: 0.5rem;
+}
 /* -----------------------------------------------------------------------------
  * Modules styles
  * -------------------------------------------------------------------------- */
@@ -85,11 +106,11 @@
 }
 
 #battery.warning {
-    color: @primary_orange;
+    color: @warning;
 }
 
 #battery.critical {
-    color: @primary_red;
+    color: @critical;
 }
 
 #battery.warning.discharging {
@@ -103,11 +124,11 @@
 }
 
 #cpu.warning {
-    color: @primary_orange;
+    color: @warning;
 }
 
 #cpu.critical {
-    color: @primary_red;
+    color: @critical;
 }
 
 #memory {
@@ -117,35 +138,25 @@
 }
 
 #memory.warning {
-    color: @primary_orange;
+    color: @warning;
  }
 
 #memory.critical {
     color: red;
     animation-name: blink-critical;
     animation-duration: 2s;
-    padding-left:5px;
-    padding-right:5px;
-}
-
-#mode {
-    background: @primary_yellow;
-    border-bottom: 3px @primary_blue;
-    color: @base;
-    margin-left: 5px;
-    padding: 7px;
 }
 
 #network.disconnected {
-    color: @primary_orange;
+    color: @warning;
 }
 
 #pulseaudio {
-    padding-top:6px;
+    /* padding-top:6px; */
 }
 
 #pulseaudio.muted {
-    color: @primary_yellow;
+    color: @modified;
 }
 
 #temperature.critical {
@@ -157,40 +168,27 @@
 }
 
 #workspaces {
-    font-size:13px;
+    font-size: 16px;
 }
 
 #workspaces button {
-    /* border-bottom: 3px solid @primary_blue; */
-    color: #ffffff;
-    margin-bottom: 0px;
-    padding:0px;
+    color: @text;
+    margin: 0 .2rem;
+    padding: 0px;
 }
 
-#workspaces button.focused {
-    /* border-bottom: 3px solid  @primary_yellow; */
-    margin-bottom: 0px;
-    padding-left:0;
+#workspaces button.active {
+    color: @highlight;
 }
+
+#workspaces button.visible { }
 
 #workspaces button.urgent {
-    border-color: @primary_red;
-    color: @primary_red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
 }
 
-#custom-power {
-    margin-left:15px;
-    margin-right:15px;
-    font-size:15px;
-}
+#workspaces button.persistent { }
 
-#custom-launcher {
-    font-size:15px;
-    margin-left:15px;
-    margin-right:10px;
-}
+#workspaces button.hidden { }
 
-#backlight.icon {
-    padding-right:1px;
-    font-size: 13px;
-}

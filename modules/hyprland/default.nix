@@ -13,12 +13,10 @@
     grim
     slurp
     inputs.hyprland-contrib.packages.x86_64-linux.grimblast
-    wofi-emoji
     hyprpaper
+    libappindicator-gtk3 # Needed for udiskies trayer icon
   ];
-
-  programs.wofi.enable = true;
-
+  
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = import ./config.nix { };

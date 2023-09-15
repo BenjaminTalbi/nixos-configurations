@@ -10,6 +10,7 @@
     ./modules/waybar
     ./modules/terminal
     ./modules/gtk
+    ./modules/wofi
   ];
 
   nixpkgs = {

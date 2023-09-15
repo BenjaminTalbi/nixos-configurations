@@ -13,16 +13,28 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget # Common util
     curl # Common util
+    udiskie # Auto mount USB storage
+
+    tidal-hifi
   ];
- 
+
   # Editor
   environment.variables.EDITOR = "nvim";
 
   # Fonts
   fonts = {
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "IosevkaTerm" "Iosevka" "Meslo" ]; })
-      font-awesome
+      (nerdfonts.override {
+        fonts = [
+          "FiraCode"
+          "IosevkaTerm"
+          "Iosevka"
+          "Meslo"
+          "Mononoki"
+          "CodeNewRoman"
+        ];
+      })
+      # font-awesome
     ];
     # enableDefaultFonts = false;
   };
@@ -34,10 +46,10 @@
   sound.enable = false;
   hardware.pulseaudio.enable = false;
   services.power-profiles-daemon = {
-    enable = true;			# Check later TODO
+    enable = true; # Check later TODO
   };
-  
-  security.polkit.enable = true; 
+
+  security.polkit.enable = true;
 
   # OpenSSH daemon
   services = {
@@ -45,10 +57,10 @@
       enable = true;
       settings = {
         X11Forwarding = true;
-        PermitRootLogin = "no";		# Disable Root Login
-        PasswordAuthentication = false; 	# Disable password login
+        PermitRootLogin = "no"; # Disable Root Login
+        PasswordAuthentication = false; # Disable password login
       };
-      openFirewall = false; 		# Check later TODO
+      openFirewall = false; # Check later TODO
     };
     pipewire = {
       enable = true;
@@ -56,7 +68,7 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-    dbus.packages = [ pkgs.gcr ]; 	# Unsure what this is for TODO
+    dbus.packages = [ pkgs.gcr ]; # Unsure what this is for TODO
     blueman.enable = true;
   };
 
@@ -89,7 +101,7 @@
     isNormalUser = true;
     description = "Benjamin";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [ ];
     # TODO Add my public key
     # openssh.authorizedKeys.keys = [ "" ];
   };
@@ -98,8 +110,8 @@
   nixpkgs.config = {
     allowUnfree = true;
   };
-  
-nix = {
+
+  nix = {
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
@@ -109,7 +121,7 @@ nix = {
       dates = "weekly";
       options = "--delete-older-than 1w";
     };
-  };  
+  };
 
   # Bootloader.
   boot.loader.systemd-boot = {
