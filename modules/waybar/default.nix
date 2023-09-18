@@ -12,7 +12,7 @@
     settings = {
       mainBar = {
         layer = "top";
-        modules-left = [ "wlr/workspaces" ];
+        modules-left = [ "hyprland/workspaces" ];
         modules-center = [ ];
         modules-right = [
           "wireplumber"
@@ -24,7 +24,7 @@
           "clock"
           "tray"
         ];
-        "wlr/workspaces" = {
+        "hyprland/workspaces" = {
           format = "{icon}";
           on-scroll-up = "hyprctl dispatch workspaces e+1";
           on-scroll-down = "hyprctl dispatch workspaces e-1";
@@ -35,16 +35,8 @@
             "3" = "󰊻";
             "4" = "";
           };
-          persistent_workspaces = {
-            "1" = [ ];
-            "2" = [ ];
-            "3" = [ ];
-            "4" = [ ];
-            #"5" = [];
-            #"6" = [];
-            #"7" = [];
-            #"8" = [];
-            #"9" = [];
+          persistent-workspaces = {
+            "*" = [ 1 2 3 4 ];
           };
         };
         backlight = {

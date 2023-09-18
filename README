@@ -3,9 +3,12 @@ Every file that needs to be added to the store HAS TO BE added in git!
 sudo ln -s ~/nixos-config/ /etc/nixos
 ```
 
+Keep an eye on:
+- Battery life
 
 TODO: 
 - FIX crash when opening 2 terminals
+    - https://github.com/wez/wezterm/issues/4294
 - waybar
     - Music widget
     - CPU Temp and fan speeds
@@ -17,12 +20,10 @@ TODO:
     - Dunst
 - Get bluetooth GUI
 - Bind media keys and F-Row keys of the laptop
-- Set Fish as default SHELL
-    - Init starship
-    - Manage SSH keys
+- Prettify Starship
+- Manage SSH keys
 - Lock screen
     - Fingerprint scan???
 - Login screen like on PC
 - Umlaute
 - Cursor
-- Suspend/Resume

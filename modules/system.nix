@@ -103,12 +103,15 @@
     xkbVariant = "";
   };
 
+  # Enable fish shell
+  programs.fish.enable = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.benjamin = {
     isNormalUser = true;
     description = "Benjamin";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ ];
+    shell = pkgs.fish;
     # TODO Add my public key
     # openssh.authorizedKeys.keys = [ "" ];
   };
