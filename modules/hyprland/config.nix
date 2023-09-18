@@ -7,7 +7,7 @@
     # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
     # Autostart
-    exec-once = hyprpaper & waybar & dunst 
+    exec-once = hyprpaper & waybar & dunst & nm-applet 
     exec-once = /usr/lib/polkit-kde-authentication-agent-1
     exec = udiskie --appindicator -t
 

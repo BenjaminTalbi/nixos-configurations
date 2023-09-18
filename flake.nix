@@ -11,6 +11,8 @@
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
+
+    trusted-users = [ "benjamin" ]; 
   };
 
   inputs = {
@@ -47,13 +49,13 @@
           # Update to 13 as soon as it is listed here
           # https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.framework-12th-gen-intel
-          
+
           # Essential for Hyprland. Import it here and not in the module itself!
           hyprland.nixosModules.default
-          
+
           # Maybe refactor into modules/system.nix
           { programs.hyprland.enable = true; }
-          
+
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;

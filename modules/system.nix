@@ -18,12 +18,19 @@
     tidal-hifi
   ];
 
+  # Make using swaylock possible
+  security.pam.services.swaylock.text = ''
+    # PAM configuration file for the swaylock screen locker. By default, it includes
+    # the 'login' configuration file (see /etc/pam.d/login)
+    auth include login
+  '';
+
   # Editor
   environment.variables.EDITOR = "nvim";
 
   # Fonts
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       (nerdfonts.override {
         fonts = [
           "FiraCode"

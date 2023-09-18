@@ -13,7 +13,11 @@
   # Enable networking
   networking.networkmanager.enable = true;
   networking.hostName = "framework"; # Define your hostname.
-  nm-applet.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    networkmanagerapplet
+  ];
+
   # networking.wireless = {
   #   enable = true; # Enables wireless support via wpa_supplicant.
   #   userControlled.enable = true;

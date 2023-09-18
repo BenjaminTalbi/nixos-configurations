@@ -35,7 +35,6 @@
 
     ripgrep
     jq # lightweight and flexible command-line JSON processor
-    exa
     fzf # command-line fuzzy finder
 
     dnsutils

@@ -7,19 +7,13 @@ sudo ln -s ~/nixos-config/ /etc/nixos
 TODO: 
 - FIX crash when opening 2 terminals
 - waybar
-    - Fix crash on click on workspace
-    - Improve icons and maybe add back text
     - Music widget
-    - Bold font?
-    - Slimmer bar?
-    - Color current workspace
     - CPU Temp and fan speeds
 - Shortcuts
     - Add one for browser that either opens it or jumps to its workspace
     - Also open browser in its workspace if it's empty
     - Jump between last 2 workspace
 - Prettify it
-    - Wofi
     - Dunst
 - Get bluetooth GUI
 - Bind media keys and F-Row keys of the laptop
@@ -30,3 +24,5 @@ TODO:
     - Fingerprint scan???
 - Login screen like on PC
 - Umlaute
+- Cursor
+- Suspend/Resume

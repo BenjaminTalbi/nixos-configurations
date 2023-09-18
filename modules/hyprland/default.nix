@@ -15,8 +15,10 @@
     inputs.hyprland-contrib.packages.x86_64-linux.grimblast
     hyprpaper
     libappindicator-gtk3 # Needed for udiskies trayer icon
+
   ];
-  
+
+
   wayland.windowManager.hyprland = {
     enable = true;
     extraConfig = import ./config.nix { };

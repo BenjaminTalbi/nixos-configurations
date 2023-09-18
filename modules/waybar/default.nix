@@ -6,7 +6,7 @@
   programs.waybar = {
     enable = true;
     # Overwrite normal waybar with patched one 
-    package = inputs.hyprland.packages.x86_64-linux.waybar-hyprland.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ]; });
+    #package = inputs.hyprland.packages.x86_64-linux.waybar-hyprland.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ]; });
     # package = pkgs.waybar.overrideAttrs (oldAttrs: { mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ]; });
     style = ./styles.css;
     settings = {
