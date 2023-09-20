@@ -157,7 +157,8 @@
         "hyprland-contrib": "hyprland-contrib",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
-        "nur": "nur"
+        "nur": "nur",
+        "tailwind-sorter-nvim": "tailwind-sorter-nvim"
       }
     },
     "systems": {
@@ -172,6 +173,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "tailwind-sorter-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1694543359,
+        "narHash": "sha256-8ywio1EqHc95UyDhG5Xa/xmq5DWILhC33oJ2P7ovAfQ=",
+        "owner": "laytan",
+        "repo": "tailwind-sorter.nvim",
+        "rev": "efc34952eb0a20520f12c8a273ea44298c11a4fa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "laytan",
+        "repo": "tailwind-sorter.nvim",
         "type": "github"
       }
     },

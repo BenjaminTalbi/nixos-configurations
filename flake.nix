@@ -33,6 +33,12 @@
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Find a better way, that I actually understand
+    tailwind-sorter-nvim = {
+      url = "github:laytan/tailwind-sorter.nvim";
+      flake = false;
+    };
   };
 
   outputs = inputs@{ self, nur, nixpkgs, home-manager, hyprland, nixos-hardware, ... }: {

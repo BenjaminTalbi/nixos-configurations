@@ -1,5 +1,10 @@
-{ pkgs, config, ... }:
-
+{ pkgs, config, inputs, ... }:
+let
+  tailwind-sorter = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "tailwind-sorter";
+    src = inputs.tailwind-sorter-nvim; 
+  };
+in
 {
   programs.neovim = {
     enable = true;
@@ -49,6 +54,7 @@
       #    config = builtins.readFile(./configurations/undotree.lua);
       #    type = "lua";
       #  }
+      tailwind-sorter
     ];
     # Extra packages like LSPs
     extraPackages = with pkgs; [
@@ -60,6 +66,7 @@
       nixpkgs-fmt
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
+      nodePackages.svelte-language-server
       ripgrep
       fd
       nil
