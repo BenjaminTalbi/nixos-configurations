@@ -14,7 +14,7 @@
     wget # Common util
     curl # Common util
     udiskie # Auto mount USB storage
-
+    grc # For fish shell
     tidal-hifi
   ];
 

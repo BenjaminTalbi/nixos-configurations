@@ -2,7 +2,10 @@
 
 {
   programs = {
-    starship = { enable = true; settings = { add_newline = false; }; };
+    starship = {
+      enable = true;
+      settings = { add_newline = true; };
+    };
     wezterm = {
       enable = true;
       extraConfig = ''
@@ -16,7 +19,6 @@
         config.window_background_opacity = 0.9
         config.adjust_window_size_when_changing_font_size = false
 
-        front_end = "OpenGL"
         return config
       '';
     };
@@ -24,6 +26,7 @@
       enable = true;
       interactiveShellInit = '' 
 			set fish_greeting # Disable greeting
+            set -gx DIRENV_LOG_FORMAT ""
 		'';
       plugins = [
         # import with nixpkgs
@@ -31,6 +34,10 @@
         { name = "done"; src = pkgs.fishPlugins.done.src; }
         { name = "fzf-fish"; src = pkgs.fishPlugins.fzf-fish.src; }
       ];
+    };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
   };
 }
