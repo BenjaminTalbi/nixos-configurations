@@ -31,6 +31,11 @@
     displayManager = {
       sddm.enable = true;
       sddm.theme = "${import ./sddm/sddm-theme.nix { inherit pkgs; }}";
+      sddm.settings = {
+        Autologin = {
+          User = "benjamin";
+        };
+      };
     };
   };
 
