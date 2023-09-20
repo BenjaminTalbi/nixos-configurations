@@ -20,8 +20,8 @@
       package = pkgs.papirus-icon-theme;
     };
     cursorTheme = {
-      name = "Bibata Original Ice";
-      size = 32;
+      name = "Bibata-Original-Ice";
+      size = 24;
       package = pkgs.bibata-cursors;
     };
     gtk3.extraConfig = {

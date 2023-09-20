@@ -11,6 +11,7 @@
     ./modules/terminal
     ./modules/gtk
     ./modules/wofi
+    ./modules/qt
   ];
 
   nixpkgs = {
