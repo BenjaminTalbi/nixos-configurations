@@ -16,8 +16,6 @@ TODO:
     - Add one for browser that either opens it or jumps to its workspace
     - Also open browser in its workspace if it's empty
     - Jump between last 2 workspace
-- Prettify it
-    - Dunst
 - Get bluetooth GUI
 - Bind media keys and F-Row keys of the laptop
 - Prettify Starship
