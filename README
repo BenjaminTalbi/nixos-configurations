@@ -7,6 +7,8 @@ Keep an eye on:
 - Battery life
 
 TODO: 
+- KMonad
+    - https://www.youtube.com/watch?v=Dhj1eauljwU
 - FIX crash when opening 2 terminals
     - https://github.com/wez/wezterm/issues/4294
 - waybar
