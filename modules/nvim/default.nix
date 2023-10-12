@@ -1,6 +1,6 @@
 { pkgs, config, inputs, ... }:
 let
-  tailwind-sorter = pkgs.vimUtils.buildVimPluginFrom2Nix {
+  tailwind-sorter = pkgs.vimUtils.buildVimPlugin {
     name = "tailwind-sorter";
     src = inputs.tailwind-sorter-nvim; 
   };
@@ -67,6 +67,7 @@ in
       nodePackages.typescript-language-server
       nodePackages.vscode-langservers-extracted
       nodePackages.svelte-language-server
+      nodePackages."@tailwindcss/language-server"
       ripgrep
       fd
       nil

@@ -16,6 +16,7 @@
     udiskie # Auto mount USB storage
     grc # For fish shell
 
+    lazygit # For work
     tidal-hifi
 
     # Required for sddm 
