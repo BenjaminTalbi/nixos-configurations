@@ -52,9 +52,8 @@
         modules = [
           ./hosts/framework
           # Hardware optimizations for framework laptops
-          # Update to 13 as soon as it is listed here
           # https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
-          nixos-hardware.nixosModules.framework-12th-gen-intel
+          nixos-hardware.nixosModules.framework-13th-gen-intel
 
           # Essential for Hyprland. Import it here and not in the module itself!
           hyprland.nixosModules.default

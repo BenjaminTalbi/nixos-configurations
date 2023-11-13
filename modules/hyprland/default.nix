@@ -10,12 +10,11 @@
   home.packages = with pkgs; [
     playerctl
     wl-clipboard
-    grim
-    slurp
-    inputs.hyprland-contrib.packages.x86_64-linux.grimblast
-    hyprpaper
+    grim # Screenshots
+    slurp # Select screen area
+    inputs.hyprland-contrib.packages.x86_64-linux.grimblast # Builds on Grim
+    hyprpaper # Wallpaper
     libappindicator-gtk3 # Needed for udiskies trayer icon
-
   ];
 
 
@@ -23,6 +22,13 @@
     enable = true;
     extraConfig = import ./config.nix { };
   };
+
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = [
+  #     pkgs.xdg-desktop-portal-gtk
+  #   ];
+  # };
 
   xdg.configFile = {
     "hypr/hyprpaper.conf" = {

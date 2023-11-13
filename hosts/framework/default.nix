@@ -27,6 +27,7 @@
     '';
   };
   systemd.sleep.extraConfig = "HibernateDelaySec=2h";
+  powerManagement.powertop.enable = true;
 
   # networking.wireless = {
   #   enable = true; # Enables wireless support via wpa_supplicant.

@@ -18,12 +18,10 @@ TODO:
     - Add one for browser that either opens it or jumps to its workspace
     - Also open browser in its workspace if it's empty
     - Jump between last 2 workspace
-- Get bluetooth GUI
-- Bind media keys and F-Row keys of the laptop
+- Bind F-Row keys of the laptop
 - Prettify Starship
 - Manage SSH keys
 - Lock screen
     - Fingerprint scan???
-- Login screen like on PC
 - Umlaute
-- Cursor
+- udiskie spawns every time I close lid

@@ -15,7 +15,7 @@
     curl # Common util
     udiskie # Auto mount USB storage
     grc # For fish shell
-
+    obs-studio
     lazygit # For work
     tidal-hifi
 
@@ -27,6 +27,8 @@
     gst_all_1.gst-libav
     gst_all_1.gstreamer
 
+    citrix_workspace
+    powertop
   ];
 
   services.xserver = {
