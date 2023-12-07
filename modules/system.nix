@@ -20,6 +20,7 @@
     tidal-hifi
     obsidian
 
+
     # Required for sddm 
     libsForQt5.qt5.qtquickcontrols2
     libsForQt5.qt5.qtgraphicaleffects
@@ -126,6 +127,11 @@
     LC_PAPER = "de_DE.UTF-8";
     LC_TELEPHONE = "de_DE.UTF-8";
     LC_TIME = "de_DE.UTF-8";
+  };
+
+  xdg.portal = {
+    enable = true;
+    config.common.default = "xdg-desktop-portal-hyprland";
   };
 
   # Configure keymap in X11

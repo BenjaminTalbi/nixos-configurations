@@ -23,12 +23,6 @@
     extraConfig = import ./config.nix { };
   };
 
-  # xdg.portal = {
-  #   enable = true;
-  #   extraPortals = [
-  #     pkgs.xdg-desktop-portal-gtk
-  #   ];
-  # };
 
   xdg.configFile = {
     "hypr/hyprpaper.conf" = {

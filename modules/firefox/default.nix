@@ -8,7 +8,6 @@ in
     enable = true;
     profiles.benjamin = {
       extensions = with nurNoPkgs.repos.rycee.firefox-addons; [
-        ublock-origin
         bitwarden
         istilldontcareaboutcookies        
       ];
