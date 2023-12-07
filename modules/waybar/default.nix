@@ -17,9 +17,7 @@
         modules-right = [
           "wireplumber"
           "backlight"
-          "bluetooth"
           "disk"
-          "network"
           "battery"
           "clock"
           "tray"
@@ -32,11 +30,12 @@
           format-icons = {
             "1" = "";
             "2" = "";
-            "3" = "󰊻";
-            "4" = "";
+            "teams" = "󰊻";
+            "music" = "";
+            "notes" = "";
           };
           persistent-workspaces = {
-            "*" = [ 1 2 3 4 ];
+            "*" = [ 1 2 ];
           };
         };
         backlight = {
@@ -55,11 +54,6 @@
           format = "{icon} {capacity}%";
           format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" ];
           tooltip-format = "Capacity: {capacity}%\n{timeTo}\nCurrent draw: {power}󱐋";
-        };
-        bluetooth = {
-          format = "󰂯";
-          format-connected = "󰂱";
-          format-disabled = "󰂲";
         };
         # TODO work on calendar
         clock = {

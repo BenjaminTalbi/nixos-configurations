@@ -18,6 +18,7 @@
     obs-studio
     lazygit # For work
     tidal-hifi
+    obsidian
 
     # Required for sddm 
     libsForQt5.qt5.qtquickcontrols2
@@ -29,6 +30,9 @@
 
     citrix_workspace
     powertop
+
+    # Personal
+    discord
   ];
 
   services.xserver = {
@@ -132,13 +136,17 @@
 
   # Enable fish shell
   programs.fish.enable = true;
+  programs.ssh.extraConfig = ''
+  Host * 
+   ForwardAgent yes
+  '';
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.benjamin = {
     isNormalUser = true;
     description = "Benjamin";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [ ];
-    shell = pkgs.fish;
+    shell = pkgs.bash;
     # TODO Add my public key
     # openssh.authorizedKeys.keys = [ "" ];
   };

@@ -7,10 +7,10 @@
   # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
   # Autostart
-  exec-once = hyprpaper & waybar & dunst & nm-applet 
+  exec-once = hyprpaper & waybar & dunst & nm-applet & udiskie --appindicator -t 
   exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
   exec-once = /usr/lib/polkit-kde-authentication-agent-1
-  exec = udiskie --appindicator -t
+  exec-once = obsidian & firefox & tidal-hifi
 
   # TODO: Add this only on laptop?
   xwayland {
@@ -139,12 +139,15 @@
   windowrulev2 = center,class:^jetbrains-,title:^$
   windowrulev2 = forceinput,class:^jetbrains-,title:^$
   windowrulev2 = workspace name:notes silent,class:^(obsidian)$
+  windowrulev2 = fullscreen,class:^(obsidian)$
   windowrulev2 = float, class:^(org.kde.polkit-kde-authentication-agent-1)$
   windowrulev2 = forceinput, class:^(org.kde.polkit-kde-authentication-agent-1)$
   windowrulev2 = opacity 0.8 0.8,class:^(wezterm)$
-  windowrulev2 = workspace id:3 silent, class:^(Microsoft Teams)$
+  windowrulev2 = opacity 0.99 0.99,class:^(kitty)$
+  windowrulev2 = workspace name:teams silent, class:^(Microsoft Teams)$
   windowrulev2 = tile, title:^(Microsoft Teams)$
-
+  windowrulev2 = workspace name:teams silent, title:^(Microsoft Teams)$
+  windowrulev2 = workspace name:music silent, class:tidal-hifi 
 
   binds {
       allow_workspace_cycles = true
@@ -152,14 +155,11 @@
 
   # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
   # Also, https://wiki.hyprland.org/Configuring/Dispatchers/
-  bind = SUPER, Return, exec, wezterm
-  bind = SUPER SHIFT, Return, exec, wezterm start -- nvim ~/.config/wezterm/wezterm.lua
-  bind = SUPER CONTROL, Return, exec, wezterm start -- nvim ~/.config/hypr/
+  bind = SUPER, Return, exec, kitty 
   bind = SUPER SHIFT, C, killactive
-  bind = SUPER SHIFT, Q, exit, 
+  bind = SUPER CONTROL SHIFT, Q, exit, 
   bind = SUPER, T, togglefloating, 
-  bind = SUPER, P, exec, killall wofi || wofi --show drun -l
-
+  bind = SUPER, P, exec, killall wofi || wofi --normal-window --show drun
   bind = SUPER CONTROL, s, exec, hyprpicker
 
   # Pass through
@@ -221,8 +221,9 @@
   bind = SUPER, 8, workspace, 8
   bind = SUPER, 9, workspace, 9
   bind = SUPER, 0, workspace, 10
+  bind = SUPER, q, workspace, name:teams
+  bind = SUPER, w, workspace, name:music
   bind = SUPER, n, workspace, name:notes
-  bind = SUPER SHIFT, n, workspace, previous
 
   # Move active window to a workspace with mainMod + SHIFT + [0-9]
   bind = SUPER SHIFT, 1, movetoworkspace, 1

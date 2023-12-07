@@ -2,7 +2,30 @@
 let
   tailwind-sorter = pkgs.vimUtils.buildVimPlugin {
     name = "tailwind-sorter";
-    src = inputs.tailwind-sorter-nvim; 
+    src = pkgs.fetchFromGitHub {
+      owner = "laytan";
+      repo = "tailwind-sorter.nvim";
+      rev = "efc34952eb0a20520f12c8a273ea44298c11a4fa";
+      hash = "sha256-8ywio1EqHc95UyDhG5Xa/xmq5DWILhC33oJ2P7ovAfQ=";
+    };
+  };
+  sqls-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "sqls.vim";
+    src = pkgs.fetchFromGitHub {
+      owner = "nanotee";
+      repo = "sqls.nvim";
+      rev = "4b1274b5b44c48ce784aac23747192f5d9d26207";
+      hash = "sha256-jKFut6NZAf/eIeIkY7/2EsjsIhvZQKCKAJzeQ6XSr0s=";
+    };
+  };
+  obsidian-nvim = pkgs.vimUtils.buildVimPlugin {
+    name = "obsidian-nvim";
+    src = pkgs.fetchFromGitHub {
+      owner = "epwalsh";
+      repo = "obsidian.nvim";
+      rev = "ce58193226fa72302ad0732aa61d6a4bec3f0789";
+      hash = "sha256-g9GFq5FMaCcJ6HbnhRgCmioLvaJ4SK6jSioDi5lXeP4=";
+    };
   };
 in
 {
@@ -31,6 +54,10 @@ in
       cmp-path
       cmp-nvim-lua
 
+      # From Github
+      sqls-nvim
+      tailwind-sorter
+      obsidian-nvim
       # To consider
       # gitsigns
       # nvim-surround
@@ -54,7 +81,6 @@ in
       #    config = builtins.readFile(./configurations/undotree.lua);
       #    type = "lua";
       #  }
-      tailwind-sorter
     ];
     # Extra packages like LSPs
     extraPackages = with pkgs; [

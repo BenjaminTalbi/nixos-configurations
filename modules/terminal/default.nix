@@ -6,8 +6,19 @@
       enable = true;
       settings = { add_newline = true; };
     };
-    wezterm = {
+    tmux = {
       enable = true;
+      plugins = with pkgs; [
+      ];
+    };
+    kitty = {
+      enable = true;
+      font.name = "FiraCode Nerd Font";
+      shellIntegration.enableBashIntegration = true;
+      theme = "Rosé Pine";
+    };
+    wezterm = {
+      enable = false;
       extraConfig = ''
         local config = {}
         if wezterm.config_builder then
@@ -22,8 +33,26 @@
         return config
       '';
     };
-    fish = {
+    bash = {
       enable = true;
+      enableCompletion = true;
+      bashrcExtra = ''
+        set -o vi
+        
+        # Silence direnv log. Deactivate if you need to debug
+        export DIRENV_LOG_FORMAT=""
+        
+        # Add ssh keys
+        # if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+        # eval `ssh-agent`
+        # ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+        # fi
+        # export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+        # ssh-add -l > /dev/null || ssh-add
+      '';
+    };
+    fish = {
+      enable = false;
       interactiveShellInit = '' 
 			set fish_greeting # Disable greeting
             set -gx DIRENV_LOG_FORMAT ""
