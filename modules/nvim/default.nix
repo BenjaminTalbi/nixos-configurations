@@ -27,6 +27,15 @@ let
       hash = "sha256-g9GFq5FMaCcJ6HbnhRgCmioLvaJ4SK6jSioDi5lXeP4=";
     };
   };
+  harpoon2 = pkgs.vimUtils.buildVimPlugin {
+    name = "harpoon2";
+    src = pkgs.fetchFromGitHub {
+      owner = "ThePrimeagen";
+      repo = "harpoon";
+      rev = "07cca27cf14a458c469a759c897124f78d953db0";
+      hash = "sha256-rVzru/A0Z6PwiEUG0dHv8+KiOz9GYeHllrdSzFZSDM8=";
+    };
+  };
 in
 {
   programs.neovim = {
@@ -37,7 +46,7 @@ in
     vimdiffAlias = true;
     plugins = with pkgs.vimPlugins; [
       rose-pine
-      harpoon
+      harpoon2
       telescope-nvim
       nvim-treesitter.withAllGrammars
       nvim-lspconfig
