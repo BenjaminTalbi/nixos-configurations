@@ -34,6 +34,8 @@
 
     # Personal
     discord
+    nodejs_20
+    kmonad
   ];
 
   services.xserver = {

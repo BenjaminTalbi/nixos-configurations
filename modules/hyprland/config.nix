@@ -4,6 +4,7 @@
   monitor=eDP-1,highres,auto,1.5
   monitor=DP-1,preferred,auto,auto
   monitor=HDMI-A-1,preferred,auto,auto
+  monitor=DP-2,preferred,auto,2
   # See https://wiki.hyprland.org/Configuring/Keywords/ for more
 
   # Autostart
