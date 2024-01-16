@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
 
@@ -18,7 +18,8 @@
     obs-studio
     lazygit # For work
     tidal-hifi
-    obsidian
+    # obsidian
+    httpie
 
 
     # Required for sddm 
@@ -29,13 +30,12 @@
     gst_all_1.gst-libav
     gst_all_1.gstreamer
 
-    citrix_workspace
+    # citrix_workspace
     powertop
 
     # Personal
     discord
     nodejs_20
-    kmonad
   ];
 
   services.xserver = {
@@ -45,9 +45,9 @@
       sddm.theme = "${import ./sddm/sddm-theme.nix { inherit pkgs; }}";
       sddm.settings = {
         General.DisplayServer = "x11-user";
-#        Autologin = {
-#          User = "benjamin";
-#        };
+        #        Autologin = {
+        #          User = "benjamin";
+        #        };
       };
     };
   };
@@ -145,8 +145,8 @@
   # Enable fish shell
   programs.fish.enable = true;
   programs.ssh.extraConfig = ''
-  Host * 
-   ForwardAgent yes
+    Host * 
+     ForwardAgent yes
   '';
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.benjamin = {
@@ -160,8 +160,10 @@
   };
 
   # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
   };
 
   nix = {

@@ -1,7 +1,7 @@
 { kb_variant ? "", kb_options ? "", monitor_config ? "", ... }:
 ''
   # See https://wiki.hyprland.org/Configuring/Monitors/
-  monitor=eDP-1,highres,auto,1.5
+  monitor=eDP-1,highres,auto,1.566667
   monitor=DP-1,preferred,auto,auto
   monitor=HDMI-A-1,preferred,auto,auto
   monitor=DP-2,preferred,auto,2
