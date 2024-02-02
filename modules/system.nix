@@ -20,7 +20,7 @@
     tidal-hifi
     # obsidian
     httpie
-
+    hyprpicker
 
     # Required for sddm 
     libsForQt5.qt5.qtquickcontrols2

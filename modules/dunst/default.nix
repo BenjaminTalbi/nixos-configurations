@@ -7,7 +7,8 @@
     enable = true;
     settings = {
       global = {
-        width = 300;
+        font = "Menli Nerd Font 14.0";
+        width = 450;
         frame_width = 1;
         notification_limit = 10;
         origin = "top-right";
@@ -15,8 +16,8 @@
         corner_radius = 10;
         frame_color = "#aaaaaa00";
         separator_color = "#aaaaaa00";
-        padding = 20;
-        horizontal_padding = 10;
+        padding = 30;
+        horizontal_padding = 15;
       };
       urgency_low = {
         frame_color = "#908caa";

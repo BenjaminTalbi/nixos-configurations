@@ -34,6 +34,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Wezterm nightly
+    wezterm = {
+      url = "github:wez/wezterm?dir=nix";
+    };
+
   };
 
   outputs = inputs@{ self, nur, nixpkgs, home-manager, hyprland, nixos-hardware, ... }: {

@@ -9,15 +9,6 @@ let
       hash = "sha256-8ywio1EqHc95UyDhG5Xa/xmq5DWILhC33oJ2P7ovAfQ=";
     };
   };
-  sqls-nvim = pkgs.vimUtils.buildVimPlugin {
-    name = "sqls.vim";
-    src = pkgs.fetchFromGitHub {
-      owner = "nanotee";
-      repo = "sqls.nvim";
-      rev = "4b1274b5b44c48ce784aac23747192f5d9d26207";
-      hash = "sha256-jKFut6NZAf/eIeIkY7/2EsjsIhvZQKCKAJzeQ6XSr0s=";
-    };
-  };
   obsidian-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "obsidian-nvim";
     src = pkgs.fetchFromGitHub {
@@ -51,6 +42,11 @@ in
       nvim-treesitter.withAllGrammars
       nvim-lspconfig
 
+      # SQL 
+      vim-dadbod
+      vim-dadbod-ui
+      vim-dadbod-completion
+
       # lspconfig requirements 
       vim-nix # File type and syntax highlighting.
       luasnip
@@ -64,7 +60,6 @@ in
       cmp-nvim-lua
 
       # From Github
-      sqls-nvim
       tailwind-sorter
       obsidian-nvim
       # To consider

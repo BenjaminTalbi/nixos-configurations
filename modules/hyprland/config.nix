@@ -1,7 +1,7 @@
 { kb_variant ? "", kb_options ? "", monitor_config ? "", ... }:
 ''
   # See https://wiki.hyprland.org/Configuring/Monitors/
-  monitor=eDP-1,highres,auto,1.566667
+  monitor=eDP-1,highres,auto,1 #.566667 # WezTerm crashes currently (2024-02-02) with non div by 2 ratios
   monitor=DP-1,preferred,auto,auto
   monitor=HDMI-A-1,preferred,auto,auto
   monitor=DP-2,preferred,auto,2
@@ -156,7 +156,7 @@
 
   # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
   # Also, https://wiki.hyprland.org/Configuring/Dispatchers/
-  bind = SUPER, Return, exec, kitty 
+  bind = SUPER, Return, exec, wezterm 
   bind = SUPER SHIFT, C, killactive
   bind = SUPER CONTROL SHIFT, Q, exit, 
   bind = SUPER, T, togglefloating, 

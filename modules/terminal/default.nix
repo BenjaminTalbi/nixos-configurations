@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   programs = {
@@ -18,7 +18,8 @@
       theme = "Rosé Pine";
     };
     wezterm = {
-      enable = false;
+      enable = true;
+      package = inputs.wezterm.packages.${pkgs.system}.default;
       extraConfig = ''
         local config = {}
         if wezterm.config_builder then
@@ -27,6 +28,7 @@
 
         config.color_scheme = 'rose-pine'
         config.font = wezterm.font 'FiraCode Nerd Font'
+        config.font_size = 16.0
         config.window_background_opacity = 0.9
         config.adjust_window_size_when_changing_font_size = false
 

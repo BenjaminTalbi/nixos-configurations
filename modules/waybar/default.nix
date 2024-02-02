@@ -13,17 +13,19 @@
       mainBar = {
         layer = "top";
         modules-left = [ "hyprland/workspaces" ];
-        modules-center = [ ];
+        modules-center = [
+          "clock"
+        ];
         modules-right = [
           "wireplumber"
           "backlight"
           "disk"
           "battery"
-          "clock"
           "tray"
         ];
         "hyprland/workspaces" = {
           format = "{icon}";
+          # format = "{name}";
           on-scroll-up = "hyprctl dispatch workspaces e+1";
           on-scroll-down = "hyprctl dispatch workspaces e-1";
           on-click = "activate";
@@ -40,8 +42,8 @@
         };
         backlight = {
           device = "intel_backlight";
-          format = "{icon}";
-          format-icons = [ "" "󱎖" "" ];
+          format = "{icon} {percent}%";
+          format-icons = [ " " "󱎖 " " " ];
           on-click = "brightnessctl set +10%";
           on-click-right = "brightnessctl set 10%-";
           tooltip-format = "{percent}%";
@@ -73,8 +75,8 @@
         };
         disk = {
           interval = 120;
-          format = "";
-          #format = "{free} ";
+          #format = "";
+          format = "  {free}";
           tooltip-format = "{free}";
         };
         network = {
@@ -84,9 +86,9 @@
           tooltip-format = "{essid}";
         };
         wireplumber = {
-          format = "{icon}";
-          format-icons = [ "" "" "" ];
-          format-muted = "󰝟";
+          format = "{icon} {volume}%";
+          format-icons = [ " " " " " " ];
+          format-muted = "󰝟 ";
           on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+";
           on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-";
           on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
@@ -95,8 +97,8 @@
           tooltip-format = "{node_name} {volume}%";
         };
         tray = {
-          icon-size = 14;
-          spacing = 2;
+          icon-size = 18;
+          spacing = 3;
         };
       };
     };
