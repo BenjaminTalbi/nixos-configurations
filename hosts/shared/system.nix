@@ -2,10 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
-
+  imports = [ 
+    ../../modules/sddm
+  ];
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -13,44 +15,21 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget # Common util
     curl # Common util
+    fd # Alternative to find
     udiskie # Auto mount USB storage
-    grc # For fish shell
-    obs-studio
-    lazygit # For work
-    tidal-hifi
-    # obsidian
-    httpie
-    hyprpicker
-
-    # Required for sddm 
-    libsForQt5.qt5.qtquickcontrols2
-    libsForQt5.qt5.qtgraphicaleffects
-    libsForQt5.qt5.qtmultimedia
-    gst_all_1.gst-plugins-good
-    gst_all_1.gst-libav
-    gst_all_1.gstreamer
-
-    # citrix_workspace
-    powertop
-
-    # Personal
-    discord
-    nodejs_20
+    powertop # Analyze power consumption on intel laptops
+    zip
+    xz
+    unzip
+    ripgrep
+    jq # lightweight and flexible command-line JSON processor
+    fzf # command-line fuzzy finder
+    dnsutils
+    which
+    tree
+    brightnessctl # Control screen brightness
+    pavucontrol # GUI for sound levels
   ];
-
-  services.xserver = {
-    enable = true;
-    displayManager = {
-      sddm.enable = true;
-      sddm.theme = "${import ./sddm/sddm-theme.nix { inherit pkgs; }}";
-      sddm.settings = {
-        General.DisplayServer = "x11-user";
-        #        Autologin = {
-        #          User = "benjamin";
-        #        };
-      };
-    };
-  };
 
   # Make using swaylock possible
   security.pam.services.swaylock.text = ''
@@ -131,15 +110,17 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  xdg.portal = {
-    enable = true;
-    config.common.default = "xdg-desktop-portal-hyprland";
-  };
+  # xdg.portal = {
+  #   enable = true;
+  #   config.common.default = "xdg-desktop-portal-hyprland";
+  # };
 
   # Configure keymap in X11
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 
   # Enable fish shell

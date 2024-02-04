@@ -12,7 +12,7 @@
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
     ];
 
-    trusted-users = [ "benjamin" ]; 
+    trusted-users = [ "benjamin" ];
   };
 
   inputs = {
@@ -39,6 +39,11 @@
       url = "github:wez/wezterm?dir=nix";
     };
 
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
 
   outputs = inputs@{ self, nur, nixpkgs, home-manager, hyprland, nixos-hardware, ... }: {
@@ -54,18 +59,13 @@
           # Hardware optimizations for framework laptops
           # https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.framework-13th-gen-intel
-
-          # Essential for Hyprland. Import it here and not in the module itself!
-          hyprland.nixosModules.default
-
-          # Maybe refactor into modules/system.nix
-          { programs.hyprland.enable = true; }
-
+          
+          ./modules/hyprland
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.benjamin = import ./home.nix;
+            home-manager.users.benjamin = import ./home/default.nix;
             home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];

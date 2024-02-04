@@ -1,37 +1,43 @@
-# Since we import this module in home.nix we need to add { home-manager.extraSpecialArgs = { inherit inputs; }; } to the modules in flake.nix
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, home-manager, ... }:
 
 {
-  # Do not import the hyprland.homeManagerModules.default here or in home.nix
-  # Importing the module will give a infinite recursion error 
-  imports = [ ];
+  imports = [ inputs.hyprland.nixosModules.default ];
+  programs.hyprland.enable = true;
 
-  #TODO extract  
-  home.packages = with pkgs; [
-    playerctl
-    wl-clipboard
-    grim # Screenshots
-    slurp # Select screen area
-    inputs.hyprland-contrib.packages.x86_64-linux.grimblast # Builds on Grim
-    hyprpaper # Wallpaper
-    libappindicator-gtk3 # Needed for udiskies trayer icon
-  ];
+  home-manager.users.benjamin = {
+    imports = [ inputs.hyprland.homeManagerModules.default ];
+
+    services.udiskie.enable = true;
 
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    extraConfig = import ./config.nix { };
-  };
+    #TODO extract  
+    home.packages = with pkgs; [
+      playerctl
+      wl-clipboard
+      grim # Screenshots
+      slurp # Select screen area
+      inputs.hyprland-contrib.packages.x86_64-linux.grimblast # Builds on Grim
+      hyprpaper # Wallpaper
+      libappindicator-gtk3 # Needed for udiskies trayer icon
+    ];
 
 
-  xdg.configFile = {
-    "hypr/hyprpaper.conf" = {
-      source = ./hyprpaper.conf;
+    wayland.windowManager.hyprland = {
+      enable = true;
+      systemd.enable = true;
+      extraConfig = import ./config.nix { };
     };
-    "wallpaper" = {
-      source = ../../extras/wallpaper;
-      recursive = true;
-    };
-  };
 
+
+    xdg.configFile = {
+      "hypr/hyprpaper.conf" = {
+        source = ./hyprpaper.conf;
+      };
+      "wallpaper" = {
+        source = ../../extras/wallpaper;
+        recursive = true;
+      };
+    };
+
+  };
 }

@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../../modules/system.nix
+    ../shared/system.nix
     ./hardware-configuration.nix
   ];
   # https://github.com/NixOS/nixos-hardware/tree/master/framework
