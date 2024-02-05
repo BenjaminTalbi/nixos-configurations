@@ -29,6 +29,7 @@
     tree
     brightnessctl # Control screen brightness
     pavucontrol # GUI for sound levels
+    killall
   ];
 
   # Make using swaylock possible
