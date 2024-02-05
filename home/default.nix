@@ -59,11 +59,19 @@
   };
 
   # Enable home-manager and git
-  programs.home-manager.enable = true;
-  programs.git = {
-    enable = true;
-    userName = "Benjamin Talbi";
-    userEmail = "b.talbi@live.de";
+  programs = {
+    home-manager.enable = true;
+    git = {
+      enable = true;
+      userName = "Benjamin Talbi";
+      userEmail = "b.talbi@live.de";
+    };
+    keychain = {
+      enable = true;
+      enableBashIntegration = true;
+      keys = [ "id_ed25519" ];
+      agents = [ "ssh" ];
+    };
   };
 
   # Nicely reload system units when changing configs
