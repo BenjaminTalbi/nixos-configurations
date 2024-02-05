@@ -5,7 +5,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ 
+  imports = [
     ../../modules/sddm
   ];
   # List packages installed in system profile. To search, run:
@@ -54,7 +54,7 @@
           "CodeNewRoman"
         ];
       })
-      # font-awesome
+      font-awesome
     ];
     # enableDefaultFonts = false;
   };
@@ -90,6 +90,13 @@
     };
     dbus.packages = [ pkgs.gcr ]; # Unsure what this is for TODO
     blueman.enable = true;
+    xserver = {
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
+    };
+    # gnome.gnome-keyring.enable = true;
   };
 
   # Set your time zone.
@@ -110,25 +117,12 @@
     LC_TIME = "de_DE.UTF-8";
   };
 
-  # xdg.portal = {
-  #   enable = true;
-  #   config.common.default = "xdg-desktop-portal-hyprland";
-  # };
 
-  # Configure keymap in X11
-  services.xserver = {
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
-
-  # Enable fish shell
-  programs.fish.enable = true;
   programs.ssh.extraConfig = ''
     Host * 
      ForwardAgent yes
   '';
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.benjamin = {
     isNormalUser = true;
