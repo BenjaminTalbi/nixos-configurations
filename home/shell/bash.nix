@@ -10,13 +10,7 @@
       # Silence direnv log. Deactivate if you need to debug
       export DIRENV_LOG_FORMAT=""
         
-      # Add ssh keys
-      # if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-      # eval `ssh-agent`
-      # ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-      # fi
-      # export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-      # ssh-add -l > /dev/null || ssh-add
+      alias init-dev="/etc/nixos/scripts/init-dev-shell.sh" 
     '';
   };
 }
