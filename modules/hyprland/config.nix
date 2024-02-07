@@ -171,8 +171,8 @@
   bindle =, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+
   bindle =, XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-
   bindl  =, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle 
-  bindle =, XF86MonBrightnessUp, exec, bri --up
-  bindle =, XF86MonBrightnessDown, exec, bri --down
+  bindle =, XF86MonBrightnessUp, exec, brightnessctl set +1% 
+  bindle =, XF86MonBrightnessDown, exec,brightnessctl set 1%-
   bindle =, XF86Search, exec, SUPER, P, exec, killall wofi || wofi --show drun -l
   bindl  =, XF86AudioPlay, exec, playerctl play-pause 
   bindl  =, XF86AudioNext, exec, playerctl next 

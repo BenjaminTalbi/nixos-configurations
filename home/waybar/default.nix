@@ -17,6 +17,7 @@
           "clock"
         ];
         modules-right = [
+          "privacy"
           "wireplumber"
           "backlight"
           "disk"
@@ -40,12 +41,36 @@
             "*" = [ 1 2 ];
           };
         };
+        privacy = {
+          icon-spacing = 4;
+          icon-size = 18;
+          transition-duration = 250;
+          modules = [
+            {
+              type = "screenshare";
+              tooltip = true;
+              tooltip-icon-size = 24;
+            }
+            {
+              type = "audio-out";
+              tooltip = true;
+              tooltip-icon-size = 24;
+            }
+            {
+              type = "audio-in";
+              tooltip = true;
+              tooltip-icon-size = 24;
+            }
+          ];
+        };
         backlight = {
           device = "intel_backlight";
           format = "{icon} {percent}%";
-          format-icons = [ " " "󱎖 " " " ];
+          format-icons = [ "" "󱎖" "" ];
+          on-scroll-up = "brightnessctl set +10%";
+          on-click-down = "brightnessctl -n 10% set 10%-";
           on-click = "brightnessctl set +10%";
-          on-click-right = "brightnessctl set 10%-";
+          on-click-right = "brightnessctl -n 10% set 10%-";
           tooltip-format = "{percent}%";
         };
         battery = {
@@ -53,8 +78,8 @@
             warning = 33;
             critical = 15;
           };
-          format = "{icon} {capacity}%";
-          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" ];
+          format = "{icon}  {capacity}%";
+          format-icons = [ "" "" "" "" "" ];
           tooltip-format = "Capacity: {capacity}%\n{timeTo}\nCurrent draw: {power}󱐋";
         };
         # TODO work on calendar
@@ -76,7 +101,7 @@
         disk = {
           interval = 120;
           #format = "";
-          format = "  {free}";
+          format = " {free}";
           tooltip-format = "{free}";
         };
         network = {
@@ -87,7 +112,7 @@
         };
         wireplumber = {
           format = "{icon} {volume}%";
-          format-icons = [ " " " " " " ];
+          format-icons = [ "" "" "" ];
           format-muted = "󰝟 ";
           on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+";
           on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-";
