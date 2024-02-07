@@ -3,25 +3,26 @@ Every file that needs to be added to the store HAS TO BE added in git!
 sudo ln -s ~/nixos-config/ /etc/nixos
 ```
 
-Keep an eye on:
-- Battery life
+# My personalized work setup
+Currently using Hyprland with mostly rose-pine colors, wezterm and neovim through nixvim with my own [config](https://github.com/BenjaminTalbi/my-nixvim)
+
+## Potential issues
+- Always check the restore option when screen sharing
 
 TODO: 
-- KMonad
+- [ ] KMonad
     - https://www.youtube.com/watch?v=Dhj1eauljwU
-- FIX crash when opening 2 terminals
-    - https://github.com/wez/wezterm/issues/4294
-- waybar
-    - Music widget
-    - CPU Temp and fan speeds
+    - [ ] Umlaute
+- [ ] waybar
+    - [ ] Music widget
+    - [ ] CPU Temp and fan speeds
 - Shortcuts
-    - Add one for browser that either opens it or jumps to its workspace
-    - Also open browser in its workspace if it's empty
-    - Jump between last 2 workspace
-- Bind F-Row keys of the laptop
-- Prettify Starship
-- Manage SSH keys
-- Lock screen
-    - Fingerprint scan???
-- Umlaute
-- udiskie spawns every time I close lid
+    - [ ] Jump between last 2 workspace
+- [ ] Prettify Starship
+- [ ] Lock screen fingerprint scan
+- [ ] Fix "screen" screenshare on Discord
+- [x] Bind F-Row keys of the laptop
+- [x] Manage SSH keys
+- [x] FIX crash when opening 2 terminals
+    - https://github.com/wez/wezterm/issues/4294
+    - Current solution: Leave hyprland scaling on 1
