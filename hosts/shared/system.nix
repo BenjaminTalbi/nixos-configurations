@@ -30,7 +30,16 @@
     brightnessctl # Control screen brightness
     pavucontrol # GUI for sound levels
     killall
+    distrobox
   ];
+
+  virtualisation = {
+    podman = {
+      enable = true;
+      dockerCompat = true;
+      defaultNetwork.settings.dns_enabled = true;
+    };
+  };
 
   # Make using swaylock possible
   security.pam.services.swaylock.text = ''
@@ -97,7 +106,6 @@
         variant = "";
       };
     };
-    # gnome.gnome-keyring.enable = true;
   };
 
   # Set your time zone.
