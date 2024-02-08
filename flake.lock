@@ -426,17 +426,18 @@
         "nixvim": "nixvim_2"
       },
       "locked": {
-        "lastModified": 1707334072,
-        "narHash": "sha256-TmMtY0sp4kbdOjlEVnoARTrrLE185d7ZuG3Oj5RsK2c=",
-        "owner": "BenjaminTalbi",
-        "repo": "my-nixvim",
-        "rev": "cf3cb703aed91710a3c0d0b2a03aed8644bccff7",
-        "type": "github"
+        "dir": "my-nixvim",
+        "dirtyRev": "03670eb13b8b891eb9717828d5ddcb97624adb28-dirty",
+        "dirtyShortRev": "03670eb-dirty",
+        "lastModified": 1707418121,
+        "narHash": "sha256-br1csw3eFc5S6Tr9BkSANIS24b4kX0fAvtQ3Fc7UZ6E=",
+        "type": "git",
+        "url": "file:.?dir=my-nixvim"
       },
       "original": {
-        "owner": "BenjaminTalbi",
-        "repo": "my-nixvim",
-        "type": "github"
+        "dir": "my-nixvim",
+        "type": "git",
+        "url": "file:.?dir=my-nixvim"
       }
     },
     "nixvim_2": {

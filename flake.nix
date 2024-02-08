@@ -40,8 +40,9 @@
     };
 
     nixvim = {
-      url = "github:BenjaminTalbi/my-nixvim";
+      # url = "github:BenjaminTalbi/my-nixvim";
       # url = "github:nix-community/nixvim";
+      url = "git+file:.?dir=my-nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

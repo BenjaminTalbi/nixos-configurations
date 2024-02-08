@@ -35,6 +35,7 @@
       # Coding
       lazygit
       nodejs_20
+      jetbrains.datagrip
       # citrix_workspace
       google-chrome # For web dev
 
