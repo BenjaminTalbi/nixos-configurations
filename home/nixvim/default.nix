@@ -99,25 +99,25 @@
         options.desc = "Previous with fixed cursor";
       }
       {
-        action = ''[["_dP]]'';
+        action.__raw = "[[\"_dP]]" ;
         key = "<leader>p";
         mode = "x";
         options.desc = "Paste keep clipboard";
       }
       {
-        action = ''[["+y]]'';
+        action.__raw = "[[\"+y]]";
         key = "<leader>y";
         mode = [ "n" "v" ];
         options.desc = "Yank system clipboard";
       }
       {
-        action = ''[["+Y]]'';
+        action.__raw = "[[\"+Y]]";
         key = "<leader>Y";
         mode = "n";
         options.desc = "Yank system clipboard";
       }
       {
-        action = ''[["_d]]'';
+        action.__raw = "[[\"_d]]";
         key = "<leader>d";
         mode = "n";
         options.desc = "Delete to to system clipboard";
