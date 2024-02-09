@@ -54,7 +54,7 @@
       xfce.thunar # GUI file manager
       bottom
     ] ++ [
-      inputs.nixvim.packages."x86_64-linux".nvim
+      inputs.nixvim.packages."${builtins.currentSystem}".nvim
     ];
   };
 

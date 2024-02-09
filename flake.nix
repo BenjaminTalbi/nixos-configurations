@@ -60,7 +60,7 @@
           # Hardware optimizations for framework laptops
           # https://github.com/NixOS/nixos-hardware/blob/master/flake.nix
           nixos-hardware.nixosModules.framework-13th-gen-intel
-
+          
           ./modules/hyprland
           home-manager.nixosModules.home-manager
           {
