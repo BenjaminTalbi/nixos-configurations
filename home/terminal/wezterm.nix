@@ -12,8 +12,8 @@
 
       local rose_pine = wezterm.color.get_builtin_schemes()['rose-pine']
 
-      rose_pine.selection_fg = '#000000'
-      rose_pine.selection_bg = '#907aa9'
+      rose_pine.selection_fg = '#191724'
+      rose_pine.selection_bg = '#6e6a86'
 
         
       config.color_schemes = {
