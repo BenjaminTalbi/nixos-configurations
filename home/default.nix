@@ -1,8 +1,8 @@
-{ inputs, pkgs, system, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
-    # inputs.nixvim.homeManagerModules.nixvim
+    inputs.nixvim.homeManagerModules.nixvim
     ./dunst
     ./gtk
     ./programs/firefox
@@ -16,6 +16,7 @@
     ./terminal/wezterm.nix
     ./waybar
     ./wofi
+    ./nixvim
     # ./nvim
   ];
 
@@ -54,8 +55,6 @@
       hyprpicker
       xfce.thunar # GUI file manager
       bottom
-    ] ++ [
-      inputs.nixvim.packages."${system}".nvim
     ];
 
   };
