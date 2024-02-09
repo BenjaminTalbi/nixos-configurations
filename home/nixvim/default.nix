@@ -1,6 +1,6 @@
 { pkgs, ... }:
-# https://nix-community.github.io/nixvim
 {
+  # https://nix-community.github.io/nixvim
   imports = [
     ./telescope.nix
     ./cmp.nix
@@ -135,14 +135,31 @@
       }
     ];
 
+    plugins = {
+      indent-blankline = {
+        enable = true;
+        extraOptions = {
+          scope.enabled = false;
+        };
+      };
+      ts-autotag.enable = true;
+      treesitter-context.enable = true;
+      nvim-autopairs.enable = true;
+      gitsigns.enable = true;
+      wilder.enable = true;
+    };
+
 
     extraPlugins = with pkgs.vimPlugins; [
-      lexima-vim
+      # lexima-vim
       dressing-nvim
     ];
 
     extraPackages = with pkgs; [
       nixpkgs-fmt
+      ripgrep
+      fd
+      bat
     ];
 
   };

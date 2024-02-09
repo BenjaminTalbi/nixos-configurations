@@ -237,6 +237,9 @@
   bind = SUPER SHIFT, 8, movetoworkspace, 8
   bind = SUPER SHIFT, 9, movetoworkspace, 9
   bind = SUPER SHIFT, 0, movetoworkspace, 10
+  bind = SUPER SHIFT, q, movetoworkspace, name:teams 
+  bind = SUPER SHIFT, w, movetoworkspace, name:music
+  bind = SUPER SHIFT, n, movetoworkspace, name:notes
 
   # Scroll through existing workspaces with mainMod + scroll
   bind = SUPER, mouse_down, workspace, e+1

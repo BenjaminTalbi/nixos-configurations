@@ -31,6 +31,8 @@
     pavucontrol # GUI for sound levels
     killall
     distrobox
+    eza
+    bat
   ];
 
   virtualisation = {

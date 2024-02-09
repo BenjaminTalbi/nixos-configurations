@@ -12,12 +12,13 @@
       {
         opts = {
           position = "center";
+          redraw = true;
         };
         type = "terminal";
         val = "";
-        command = "cat ${./files/ascii1.txt}";
+        command = "bat -p --theme=default ${./files/ascii1.txt}";
         width = 75;
-        height = 25;
+        height = 30;
       }
       # {
       #   opts = {
