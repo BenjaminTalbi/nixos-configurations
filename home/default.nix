@@ -1,7 +1,8 @@
-{ inputs, pkgs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
   imports = [
+    # inputs.nixvim.homeManagerModules.nixvim
     ./dunst
     ./gtk
     ./programs/firefox
@@ -15,7 +16,7 @@
     ./terminal/wezterm.nix
     ./waybar
     ./wofi
-    # ./nvim
+    ./nvim
   ];
 
   nixpkgs = {
@@ -53,9 +54,8 @@
       hyprpicker
       xfce.thunar # GUI file manager
       bottom
-    ] ++ [
-      inputs.nixvim.packages."${builtins.currentSystem}".nvim
     ];
+
   };
 
   # Enable home-manager and git
