@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, lib, ... }:
+{ inputs, pkgs, system, ... }:
 
 {
   imports = [
@@ -16,7 +16,7 @@
     ./terminal/wezterm.nix
     ./waybar
     ./wofi
-    ./nvim
+    # ./nvim
   ];
 
   nixpkgs = {
@@ -54,6 +54,8 @@
       hyprpicker
       xfce.thunar # GUI file manager
       bottom
+    ] ++ [
+      inputs.nixvim.packages."${system}".nvim
     ];
 
   };

@@ -40,7 +40,7 @@
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "git+file:.?dir=my-nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -48,9 +48,12 @@
 
   outputs = inputs@{ self, nur, nixpkgs, home-manager, hyprland, nixos-hardware, ... }: {
     nixosConfigurations = {
-      framework = nixpkgs.lib.nixosSystem {
+      framework = 
+      let
         system = "x86_64-linux";
-
+      in
+      nixpkgs.lib.nixosSystem {
+        inherit system;
         # Required at least for hyprland and firefox
         specialArgs = { inherit inputs; };
 
@@ -66,7 +69,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.benjamin = import ./home/default.nix;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = { inherit inputs; inherit system; };
           }
         ];
       };
