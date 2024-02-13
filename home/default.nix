@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib, ... }:
 
 {
   imports = [
@@ -11,7 +11,8 @@
     ./shell/direnv.nix
     ./shell/fish.nix
     ./shell/starship.nix
-    ./shell/tmux.nix
+    ./shell/tmux.nix 
+    ./shell/zellij.nix
     ./terminal/kitty.nix
     ./terminal/wezterm.nix
     ./waybar
@@ -19,6 +20,14 @@
     ./nixvim
     # ./nvim
   ];
+
+  services.gammastep = {
+    enable = true;
+    provider = "manual";
+    latitude = 51.1;
+    longitude = 7.0;
+    tray = true;
+  };
 
   nixpkgs = {
     config = {

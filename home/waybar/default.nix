@@ -17,7 +17,6 @@
           "clock"
         ];
         modules-right = [
-          "privacy"
           "wireplumber"
           "backlight"
           "disk"
@@ -67,10 +66,10 @@
           device = "intel_backlight";
           format = "{icon} {percent}%";
           format-icons = [ "" "󱎖" "" ];
-          on-scroll-up = "brightnessctl set +10%";
-          on-click-down = "brightnessctl -n 10% set 10%-";
+          on-scroll-up = "brightnessctl set +1%";
+          on-click-down = "brightnessctl set 1%-";
           on-click = "brightnessctl set +10%";
-          on-click-right = "brightnessctl -n 10% set 10%-";
+          on-click-right = "brightnessctl set 10%-";
           tooltip-format = "{percent}%";
         };
         battery = {

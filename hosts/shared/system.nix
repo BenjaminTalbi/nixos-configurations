@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { pkgs, ... }:
-
 {
   imports = [
     ../../modules/sddm
@@ -33,6 +32,10 @@
     distrobox
     eza
     bat
+
+    update-nix-fetchgit # For keeping github dependencies up-to-date
+    nix-init
+    node2nix
   ];
 
   virtualisation = {
