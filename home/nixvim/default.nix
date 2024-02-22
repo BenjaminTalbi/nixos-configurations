@@ -99,7 +99,7 @@
         options.desc = "Previous with fixed cursor";
       }
       {
-        action.__raw = "[[\"_dP]]" ;
+        action.__raw = "[[\"_dP]]";
         key = "<leader>p";
         mode = "x";
         options.desc = "Paste keep clipboard";
@@ -147,6 +147,8 @@
       nvim-autopairs.enable = true;
       gitsigns.enable = true;
       wilder.enable = true;
+      hardtime.enable = true;
+      fidget.enable = true;
     };
 
 

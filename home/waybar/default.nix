@@ -67,7 +67,7 @@
           format = "{icon} {percent}%";
           format-icons = [ "" "󱎖" "" ];
           on-scroll-up = "brightnessctl set +1%";
-          on-click-down = "brightnessctl set 1%-";
+          on-scroll-down = "brightnessctl set 1%-";
           on-click = "brightnessctl set +10%";
           on-click-right = "brightnessctl set 10%-";
           tooltip-format = "{percent}%";

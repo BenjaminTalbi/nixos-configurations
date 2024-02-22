@@ -10,7 +10,7 @@
     ./shell/bash.nix
     ./shell/direnv.nix
     ./shell/fish.nix
-    ./shell/starship.nix
+    ./shell/starship
     ./shell/tmux.nix 
     ./shell/zellij.nix
     ./terminal/kitty.nix
@@ -18,6 +18,7 @@
     ./waybar
     ./wofi
     ./nixvim
+    ./shell/zoxide.nix
     # ./nvim
   ];
 
