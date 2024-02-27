@@ -144,6 +144,11 @@
       HostName webapp1.prd.akw 
       User deployer
       ProxyCommand ssh -W %h:%p btalbi@remote.prd.akw
+
+    Host airflow
+      HostName airflow.alan
+      User btalbi
+      ProxyCommand ssh -W %h:%p btalbi@remote.prd.akw
   '';
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
