@@ -135,6 +135,15 @@
   programs.ssh.extraConfig = ''
     Host * 
      ForwardAgent yes
+
+    Host remote
+      HostName remote.prd.akw
+      User btalbi
+    
+    Host zeiterfassung
+      HostName webapp1.prd.akw 
+      User deployer
+      ProxyCommand ssh -W %h:%p btalbi@remote.prd.akw
   '';
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

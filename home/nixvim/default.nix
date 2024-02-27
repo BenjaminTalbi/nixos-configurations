@@ -133,6 +133,18 @@
         mode = "n";
         options.desc = "Go to file explorer";
       }
+      {
+        action = ":cn<CR>";
+        key = "<leader>qj";
+        mode = "n";
+        options.desc = "Jump to next quickfix entry";
+      }
+      {
+        action = ":cp<CR>";
+        key = "<leader>qk";
+        mode = "n";
+        options.desc = "Jump to next quickfix entry";
+      }
     ];
 
     plugins = {
