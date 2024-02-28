@@ -10,9 +10,7 @@ Currently using Hyprland with mostly rose-pine colors, wezterm and neovim throug
 - Always check the restore option when screen sharing
 
 TODO: 
-- [ ] KMonad
-    - https://www.youtube.com/watch?v=Dhj1eauljwU
-    - [ ] Umlaute
+- [x] Umlaute
 - [ ] TMUX or Zellij setup
 - [ ] waybar
     - [ ] Music widget

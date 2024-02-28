@@ -33,9 +33,8 @@
     eza
     bat
 
+    keyd
     update-nix-fetchgit # For keeping github dependencies up-to-date
-    nix-init
-    node2nix
   ];
 
   virtualisation = {
@@ -111,6 +110,25 @@
         variant = "";
       };
     };
+    keyd = {
+      enable = true;
+      keyboards.default.settings = {
+        main = {
+          capslock = "overload(custom, esc)";
+        };
+        custom = {
+          h = "left";
+          k = "up";
+          j = "down";
+          l = "right";
+          a = "macro(compose a \")";
+          o = "macro(compose o \")";
+          u = "macro(compose u \")";
+          s = "macro(compose s s)";
+        };
+        "custom+shift" = { };
+      };
+    };
   };
 
   # Set your time zone.
@@ -149,13 +167,18 @@
       HostName airflow.alan
       User btalbi
       ProxyCommand ssh -W %h:%p btalbi@remote.prd.akw
+
+    Host dashboards
+      HostName dashboards.alessio-analytics.com
+      User deployer
+      ProxyCommand ssh -W %h:%p btalbi@remote.prd.akw
   '';
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.benjamin = {
     isNormalUser = true;
     description = "Benjamin";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "keyd" ];
     packages = with pkgs; [ ];
     shell = pkgs.bash;
     # TODO Add my public key

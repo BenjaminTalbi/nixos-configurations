@@ -24,9 +24,9 @@
   # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
   input {
       kb_layout = us
-      kb_variant =
+      kb_variant = 
       kb_model =
-      kb_options =
+      kb_options = compose:menu
       kb_rules =
 
   #    0 - Cursor movement will not change focus.
