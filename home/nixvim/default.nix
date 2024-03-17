@@ -12,6 +12,7 @@
     ./undotree.nix
     ./alpha.nix
     ./lualine.nix
+    ./obsidian.nix
   ];
 
   programs.nixvim = {
@@ -176,6 +177,20 @@
       bat
     ];
 
+    autoGroups = {
+      markdown_conceal = {
+        clear = true;
+      };
+    };
+
+    autoCmd = [
+      {
+        event = [ "FileType" ];
+        pattern = [ "markdown" ];
+        group = "markdown_conceal";
+        command = "setlocal conceallevel=2";
+      }
+    ];
   };
 
 }

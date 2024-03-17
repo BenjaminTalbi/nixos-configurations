@@ -24,7 +24,7 @@
 
       config.font = wezterm.font_with_fallback { 'FiraCode Nerd Font Mono', 'Font Awesome 6 Free' }
       config.font_size = 16.0
-      config.window_background_opacity = 0.97
+      config.window_background_opacity = 0.90
       config.adjust_window_size_when_changing_font_size = false
       config.hide_mouse_cursor_when_typing = true
       
