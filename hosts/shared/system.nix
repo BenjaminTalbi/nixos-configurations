@@ -33,6 +33,9 @@
     eza
     bat
 
+    parted
+    ntfs3g
+
     keyd
     update-nix-fetchgit # For keeping github dependencies up-to-date
   ];

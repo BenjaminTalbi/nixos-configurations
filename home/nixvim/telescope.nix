@@ -1,7 +1,7 @@
 {
   programs.nixvim.plugins.telescope = {
     enable = true;
-    defaults = {
+    settings.defaults = {
       mappings = {
         i =
           let
@@ -23,8 +23,10 @@
     };
     extensions.fzf-native = {
       enable = true;
-      fuzzy = true;
-      overrideFileSorter = true;
+      settings = {
+        fuzzy = true;
+        override_file_sorter = true;
+      };
     };
   };
 }

@@ -59,7 +59,7 @@
       # TODO Extract for theming
       col.active_border = rgb(f6c177) 
       col.inactive_border = rgb(524f67) 
-      rgba(524f67ee)
+      # rgba(524f67ee)
 
       layout = master
   }
@@ -121,12 +121,6 @@
   gestures {
       # See https://wiki.hyprland.org/Configuring/Variables/ for more
       workspace_swipe = off
-  }
-
-  # Example per-device config
-  # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
-  device:epic mouse V1 {
-      sensitivity = -0.5
   }
 
   # Example windowrule v1

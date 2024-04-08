@@ -28,7 +28,7 @@
       };
     };
 
-    options = {
+    opts = {
       background = "dark";
       guicursor = "";
       number = true;
@@ -150,10 +150,10 @@
 
     plugins = {
       indent-blankline = {
-        enable = true;
-        extraOptions = {
+        settings = {
           scope.enabled = false;
         };
+        enable = true;
       };
       ts-autotag.enable = true;
       treesitter-context.enable = true;

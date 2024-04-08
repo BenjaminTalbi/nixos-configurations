@@ -1,6 +1,6 @@
 {
   programs.nixvim.plugins = {
-    comment-nvim.enable = true;
+    comment.enable = true;
     ts-context-commentstring.enable = true;
   };
 }
