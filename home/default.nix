@@ -19,6 +19,7 @@
     ./wofi
     ./nixvim
     ./shell/zoxide.nix
+    ./terminal/foot.nix
     # ./nvim
   ];
 

@@ -38,6 +38,7 @@
 
     keyd
     update-nix-fetchgit # For keeping github dependencies up-to-date
+    foot
   ];
 
   virtualisation = {

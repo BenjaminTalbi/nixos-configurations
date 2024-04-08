@@ -150,7 +150,7 @@
 
   # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
   # Also, https://wiki.hyprland.org/Configuring/Dispatchers/
-  bind = SUPER, Return, exec, wezterm 
+  bind = SUPER, Return, exec, foot 
   bind = SUPER SHIFT, C, killactive
   bind = SUPER CONTROL SHIFT, Q, exit, 
   bind = SUPER, T, togglefloating, 
