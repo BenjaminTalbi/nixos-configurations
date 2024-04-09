@@ -57,7 +57,7 @@
       httpie
 
       # Productivity
-      # obsidian
+      obsidian
 
       # Fun
       discord

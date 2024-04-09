@@ -156,7 +156,7 @@
         enable = true;
       };
       ts-autotag.enable = true;
-      treesitter-context.enable = true;
+      # treesitter-context.enable = true;
       nvim-autopairs.enable = true;
       gitsigns.enable = true;
       wilder.enable = true;
