@@ -22,7 +22,6 @@
     # Needed for blocklist 
     blocklist-hosts.url = "github:StevenBlack/hosts";
     blocklist-hosts.flake = false;
-    };
   };
 
   outputs = { self, nixpkgs, nixos-wsl, ... }@inputs: 
