@@ -18,6 +18,11 @@
     # WSL dependency
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Needed for blocklist 
+    blocklist-hosts.url = "github:StevenBlack/hosts";
+    blocklist-hosts.flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, nixos-wsl, ... }@inputs: 
