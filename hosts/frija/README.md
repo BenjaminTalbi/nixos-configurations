@@ -46,3 +46,7 @@ Changing the username on an already installed system is possible as well. Follow
 
  6. Open a WSL shell. Your new username should be applied now!
 
+## Fonts
+
+You need to download a [NerdFont](https://www.nerdfonts.com/font-downloads) font and install it in your windows host machine. 
+Afterwards change the appearance of your NixOS WSL via the [terminals](https://github.com/microsoft/terminal) settings.
