@@ -1,0 +1,40 @@
+{ config, pkgs, userSettings, ... }:
+
+{
+  home.username = userSettings.username;
+  home.homeDirectory = "/home/${userSettings.username}";
+  
+  programs.home-manager.enable = true;
+  
+  imports = [
+    ../../home/shared/packages.nix
+  ];
+  
+  home.stateVersion = "23.11";
+  
+  home.sessionVariables = {
+    EDITOR = userSettings.editor;
+  }; 
+
+  home.packages = with pkgs; [];
+ 
+  xdg.enable = true;
+  xdg.userDirs = {
+    enable = true;
+    createDirectories = true;
+    music = "${config.home.homeDirectory}/Media/Music";
+    videos = "${config.home.homeDirectory}/Media/Videos";
+    pictures = "${config.home.homeDirectory}/Media/Pictures";
+    templates = "${config.home.homeDirectory}/Templates";
+    download = "${config.home.homeDirectory}/Downloads";
+    documents = "${config.home.homeDirectory}/Documents";
+    desktop = null;
+    publicShare = null;
+    extraConfig = {
+      XDG_DOTFILES_DIR = "${config.home.homeDirectory}/.dotfiles";       
+    };
+  };
+  xdg.mime.enable = true;
+  xdg.mimeApps.enable = true;
+  
+}

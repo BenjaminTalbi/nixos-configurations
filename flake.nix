@@ -2,7 +2,7 @@
   description = "My NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     
     # Needed for Home Manager
     home-manager.url = "github:nix-community/home-manager";
@@ -24,7 +24,7 @@
     blocklist-hosts.flake = false;
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, ... }@inputs: 
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }@inputs: 
   let
     userSettings = {
       username = "benjamin";
@@ -51,12 +51,25 @@
       inherit inputs;
     };
 
-    pkgs = nixpkgs;
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
   in
   {
+
+    homeConfigurations = {
+      "${userSettings.username}@frija" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        inherit extraSpecialArgs;
+
+	modules = [
+          ./hosts/frija/home.nix
+        ];
+      };
+    };
+
     nixosConfigurations = {
       frija = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+	inherit system;
         specialArgs = pkgs.lib.recursiveUpdate specialArgs { systemSettings.hostname = "frija"; };
 
         modules = [
@@ -65,6 +78,7 @@
         ];
       };
     };
+
   };
 
   nixConfig = {
