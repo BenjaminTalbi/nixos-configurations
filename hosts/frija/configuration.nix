@@ -1,8 +1,8 @@
-{ lib, pkgs, systemSettings, userSettings, ... }:
+{ inputs, pkgs, systemSettings, userSettings, ... }:
 
 {
-  imports = [];
-  
+  imports = [ ];
+
   wsl = {
     enable = true;
     wslConf.automount.root = "/mnt";
@@ -11,13 +11,13 @@
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
+
   # Ensure nix flakes are enabled
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
-  
+
   networking.hostName = systemSettings.hostname;
 
   # Timezone & Locale  
@@ -36,12 +36,15 @@
     LC_TIME = systemSettings.locale;
   };
 
+  programs.fish.enable = true;
+
   # User account
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    shell = pkgs.fish;
+    packages = with pkgs; [ ];
     uid = 1000;
   };
 
@@ -50,12 +53,12 @@
   environment.enableAllTerminfo = true;
 
   environment.systemPackages = with pkgs; [
-    (import ./win32yank.nix {inherit pkgs;})
+    (import ./win32yank.nix { inherit pkgs; })
     vim
     wget
     git
     home-manager
   ];
-  
+
   system.stateVersion = "23.11";
 }

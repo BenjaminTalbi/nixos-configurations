@@ -9,6 +9,7 @@
   imports = [
     ../../home/shared/packages.nix
     ../../home/nixvim
+    ../../home/shell
   ];
   
   home.stateVersion = "23.11";
