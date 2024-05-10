@@ -16,11 +16,13 @@ home-manager switch --flake [PATH TO FLAKE.NIX]
 ## First time build
 ### WSL
 ```sh
-sudo nixos-rebuild boot': sudo nixos-rebuild boot --flake /etc/nixos#frija
+sudo nixos-rebuild boot --flake /etc/nixos#frija
 ```
+- Follow the frija folders README to complete
+
 ### Non-WSL
 ```sh
-sudo nixos-rebuild switch': sudo nixos-rebuild boot --flake /etc/nixos#[HOSTNAME]
+sudo nixos-rebuild switch --flake /etc/nixos#[HOSTNAME]
 ```
 - This will change your username and hostname
 
