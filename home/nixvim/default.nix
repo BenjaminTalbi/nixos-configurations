@@ -41,13 +41,13 @@
           styles = {
             bold = true;
             italic = true;
-            transparency = false;
+            transparency = true;
           };
         };
       };
     };
 
-    opts = {
+    opts = {  
       background = "dark";
       guicursor = "";
       number = true;

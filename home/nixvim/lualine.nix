@@ -5,7 +5,7 @@
       globalstatus = true;
 
       sections = {
-        lualine_a = [
+        lualine_c = [
           {
             name = "filename";
             extraConfig = {
