@@ -26,6 +26,9 @@
     # OK
     ./wilder.nix
     # ./gitsigns.nix
+
+    # Testing
+    ./toggleterm.nix
   ];
 
 
