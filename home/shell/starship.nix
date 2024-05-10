@@ -10,7 +10,7 @@
           $nix_shell$character
         '';
         right_format = "$all";
-        aws.enable = false;
+        aws.disabled = true;
         character = rec {
           error_symbol = "[💥](red)";
           vimcmd_replace_symbol = "[](hotpink)";
@@ -22,7 +22,7 @@
         directory = {
           truncation_length = 5;
           truncation_symbol = "../";
-          home_symbol = "🪴";
+          home_symbol = "";
         };
         # TODO [direnv module](https://starship.rs/config/#direnv)
         git_branch = {

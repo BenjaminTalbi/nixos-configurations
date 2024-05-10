@@ -15,6 +15,11 @@
   programs.eza.enable = true;
   programs.broot.enable = true;
 
-  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [ 
+    bat
+    eza
+    fd
+    bc # Basic Calculator
+  ];
 
 }

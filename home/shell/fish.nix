@@ -1,9 +1,11 @@
-{ pkgs, lib, ... }:
+{ ... }:
 
 {
   programs.fish = {
     enable = true;
-    
+    shellAliases = {
+      ls = "eza --icons -l -T -L=1";
+    };  
   };
   
   # cd replacement that remembers
@@ -27,5 +29,4 @@
   # Tree based file explorer?
   programs.broot.enableFishIntegration = true;
 
- 
 }
