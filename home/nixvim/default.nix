@@ -12,6 +12,7 @@
     # Visual 
     ./lualine.nix
     ./indent-blankline.nix
+    ./alpha.nix
 
     # Very useful
     ./comment.nix
@@ -24,7 +25,7 @@
 
     # OK
     ./wilder.nix
-    ./gitsigns.nix
+    # ./gitsigns.nix
   ];
 
 
