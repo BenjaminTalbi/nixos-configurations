@@ -11,7 +11,7 @@
   # Cache secrets
   services.gpg-agent.enableFishIntegration = true; 
   # Tmux alternative
-  programs.zellij.enableFishIntegration = true;
+  programs.zellij.enableFishIntegration = false;
   # Write 'fuck' to correct misspelled commands
   programs.thefuck.enableFishIntegration = true; 
   # Super charged prompt
