@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    
+
     # Needed for Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -22,64 +22,67 @@
     # Needed for blocklist 
     blocklist-hosts.url = "github:StevenBlack/hosts";
     blocklist-hosts.flake = false;
+
+    # Needed for system wide theming
+    stylix.url = "github:danth/stylix";
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }@inputs: 
-  let
-    userSettings = {
-      username = "benjamin";
-      name = "benjamin";
-      email = "b.talbi@live.de";
-      term = "foot";
-      editor = "vim";
-    };
-
-    systemSettings = {
-      timezone = "Europe/Berlin";
-      locale = "en_US.UTF-8";
-    };
-
-    extraSpecialArgs = {
-      inherit userSettings;
-      inherit systemSettings;
-      inherit inputs;
-    };
-
-    specialArgs = {
-      inherit userSettings;
-      inherit systemSettings;
-      inherit inputs;
-    };
-
-    system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
-  in
-  {
-
-    homeConfigurations = {
-      "${userSettings.username}@frija" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        inherit extraSpecialArgs;
-
-	modules = [
-          ./hosts/frija/home.nix
-        ];
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, stylix, ... }@inputs:
+    let
+      userSettings = {
+        username = "benjamin";
+        name = "benjamin";
+        email = "b.talbi@live.de";
+        term = "foot";
+        editor = "vim";
       };
-    };
 
-    nixosConfigurations = {
-      frija = nixpkgs.lib.nixosSystem {
-	inherit system;
-        specialArgs = pkgs.lib.recursiveUpdate specialArgs { systemSettings.hostname = "frija"; };
-
-        modules = [
-          ./hosts/frija/configuration.nix
-	  nixos-wsl.nixosModules.wsl
-        ];
+      systemSettings = {
+        timezone = "Europe/Berlin";
+        locale = "en_US.UTF-8";
       };
-    };
 
-  };
+      extraSpecialArgs = {
+        inherit userSettings;
+        inherit systemSettings;
+        inherit inputs;
+      };
+
+      specialArgs = {
+        inherit userSettings;
+        inherit systemSettings;
+        inherit inputs;
+      };
+
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+
+      homeConfigurations = {
+        "${userSettings.username}@frija" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          inherit extraSpecialArgs;
+
+          modules = [
+            ./hosts/frija/home.nix
+          ];
+        };
+      };
+
+      nixosConfigurations = {
+        frija = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = pkgs.lib.recursiveUpdate specialArgs { systemSettings.hostname = "frija"; };
+
+          modules = [
+            ./hosts/frija/configuration.nix
+            nixos-wsl.nixosModules.wsl
+          ];
+        };
+      };
+
+    };
 
   nixConfig = {
     substituters = [
@@ -94,5 +97,5 @@
 
     trusted-users = [ "benjamin" ];
   };
-  
+
 }
