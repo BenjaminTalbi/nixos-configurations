@@ -81,6 +81,7 @@
           modules = [
             ./hosts/wodan/home.nix
           ];
+        };
         "${userSettings.username}@frija" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           inherit extraSpecialArgs;
