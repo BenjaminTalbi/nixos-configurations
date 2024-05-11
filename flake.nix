@@ -40,6 +40,20 @@
       systemSettings = {
         timezone = "Europe/Berlin";
         locale = "en_US.UTF-8";
+        font = {
+          regular = {
+            name = "Iosevka Nerd Font";
+            package = (pkgs.nerdfonts.override {
+              fonts = [ "Iosevka" ];
+            });
+          };
+          monospace = {
+            name = "ZedMono Nerd Font";
+            package = (pkgs.nerdfonts.override {
+              fonts = [ "ZedMono" ];
+            });
+          };
+        };
       };
 
       extraSpecialArgs = {
