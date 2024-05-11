@@ -45,48 +45,39 @@
         };
       };
       onAttach = ''
-        local opts = { buffer = bufnr, remap = false }
+        local function map_lsp(description, mode, lhs, rhs)
+          local options = { buffer = bufnr, remap = false }
+          if description then options = vim.tbl_extend('force', options, { desc = description } ) end
+          vim.keymap.set(mode, lhs, rhs, options)
+        end
 
-        -- show definitions, references
-        vim.keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+        map_lsp("Show definitions, references", "n", "gR", "<cmd>Telescope lsp_references<CR>")
 
-        -- go to declaration
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts) 
+        map_lsp("Go to declaration", "n", "gd", vim.lsp.buf.definition) 
 
-        -- show lsp definitions
-        vim.keymap.set("n", "gD", "<cmd>Telescope lsp_definitions<CR>", opts)
+        map_lsp("Show lsp definitions", "n", "gD", "<cmd>Telescope lsp_definitions<CR>")
 
-        -- show lsp implementations
-        vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
+        map_lsp("Show lsp implementations", "n", "gi", "<cmd>Telescope lsp_implementations<CR>")
 
-        -- show lsp type definitions
-        vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts)
+        map_lsp("Show lsp type definitions", "n", "gt", "<cmd>Telescope lsp_type_definitions<CR>")
 
-        -- see available code actions
-        vim.keymap.set({"n", "v"}, "<leader>ca", vim.lsp.buf.code_action, opts)
+        map_lsp("See available code actions", {"n", "v"}, "<leader>ca", vim.lsp.buf.code_action)
 
-        -- smart rename 
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+        map_lsp("Smart rename ", "n", "<leader>rn", vim.lsp.buf.rename)
 
-        -- show buffer diagnostics 
-        vim.keymap.set("n", "<leader>vD", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
+        map_lsp("Show buffer diagnostics ", "n", "<leader>vD", "<cmd>Telescope diagnostics bufnr=0<CR>")
             
-        -- show line diagnostics
-        vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
+        map_lsp("Show line diagnostics", "n", "<leader>vd", vim.diagnostic.open_float)
         
-        -- go to next diagnostics
-        vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
+        map_lsp("Go to next diagnostics", "n", "[d", vim.diagnostic.goto_next)
  
-        -- go to previous diagnostics
-        vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
+        map_lsp("Go to previous diagnostics", "n", "]d", vim.diagnostic.goto_prev)
           
-        -- show documentation for what is under the cursor
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+        map_lsp("Show documentation for what is under the cursor", "n", "K", vim.lsp.buf.hover)
 
-        -- restart lsp
-        vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
-          
-        vim.keymap.set("n", "<leader>fj", vim.lsp.buf.format, opts)
+        map_lsp("Restart lsp", "n", "<leader>rs", "<cmd>LspRestart<CR>")
+        
+        map_lsp("Format buffer", "n", "<leader>fj", vim.lsp.buf.format)
       '';
     };
   };
