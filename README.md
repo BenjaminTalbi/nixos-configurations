@@ -21,8 +21,17 @@ sudo nixos-rebuild boot --flake /etc/nixos#frija
 - Follow the frija folders README to complete
 
 ### Non-WSL
+Clone the repo
 ```sh
-sudo nixos-rebuild switch --flake /etc/nixos#[HOSTNAME]
+nix-shell -p git --command "git clone https://github.com/BenjaminTalbi/nixos-configurations.git nixos-dots"
+```
+Generate hardware config
+```sh
+sudo nixos-generate-config --show-hardware-config > hosts/YOUR_HOST/hardware-configuration.nix
+```
+```sh
+cd nixos-dots
+sudo nixos-rebuild switch --flake .#[HOSTNAME]
 ```
 - This will change your username and hostname
 
