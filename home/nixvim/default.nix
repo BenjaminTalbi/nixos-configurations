@@ -50,7 +50,7 @@
       };
     };
 
-    opts = {  
+    opts = {
       background = "dark";
       guicursor = "";
       number = true;
@@ -179,6 +179,9 @@
       markdown_conceal = {
         clear = true;
       };
+      highlight_yank = {
+        clear = true;
+      };
     };
 
     autoCmd = [
@@ -187,6 +190,12 @@
         pattern = [ "markdown" ];
         group = "markdown_conceal";
         command = "setlocal conceallevel=2";
+      }
+      {
+        event = [ "TextYankPost" ];
+        desc = "Highlight when yanking text";
+        group = "highlight_yank";
+        callback.__raw = "function() vim.highlight.on_yank() end";
       }
     ];
   };

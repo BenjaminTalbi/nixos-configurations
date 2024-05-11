@@ -3,23 +3,28 @@
 {
   home.username = userSettings.username;
   home.homeDirectory = "/home/${userSettings.username}";
-  
+
   programs.home-manager.enable = true;
-  
+  programs.git = {
+    enable = true;
+    userName = "Benjamin Talbi";
+    userEmail = "b.talbi@live.de";
+  };
+
   imports = [
     ../../home/shared/packages.nix
     ../../home/nixvim
     ../../home/shell
   ];
-  
+
   home.stateVersion = "23.11";
-  
+
   home.sessionVariables = {
     EDITOR = userSettings.editor;
-  }; 
+  };
 
-  home.packages = with pkgs; [];
- 
+  home.packages = with pkgs; [ ];
+
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;
@@ -33,10 +38,10 @@
     desktop = null;
     publicShare = null;
     extraConfig = {
-      XDG_DOTFILES_DIR = "${config.home.homeDirectory}/.dotfiles";       
+      XDG_DOTFILES_DIR = "${config.home.homeDirectory}/.dotfiles";
     };
   };
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
-  
+
 }
