@@ -35,6 +35,7 @@
         email = "b.talbi@live.de";
         term = "foot";
         editor = "vim";
+        theme = "everforest";
       };
 
       systemSettings = {
