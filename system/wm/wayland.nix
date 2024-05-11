@@ -1,11 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  import = [
+  imports = [
     ./pipewire.nix
     ./dbus.nix
     ./gnome-keyring.nix
-    ./fonts.nix
+    # ./fonts.nix
   ];
 
   environment.systemPackages = with pkgs; [

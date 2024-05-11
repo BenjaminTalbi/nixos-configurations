@@ -346,7 +346,7 @@
     };
   };
 
-  servies.udiskie = {
+  services.udiskie = {
     enable = true;
     tray = true;
   };

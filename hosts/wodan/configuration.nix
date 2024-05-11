@@ -2,8 +2,10 @@
 
 {
   imports = [
-   ../../system/core
    ./hardware-configuration.nix
+   ../../system/core
+   ../../system/wm/hyprland.nix
+   ../../system/stylix
   ];
 
   environment.systemPackages = with pkgs; [
