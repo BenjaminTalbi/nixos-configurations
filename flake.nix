@@ -74,6 +74,13 @@
     {
 
       homeConfigurations = {
+        "${userSettings.username}@wodan" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          inherit extraSpecialArgs;
+
+          modules = [
+            ./hosts/wodan/home.nix
+          ];
         "${userSettings.username}@frija" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           inherit extraSpecialArgs;
@@ -85,6 +92,15 @@
       };
 
       nixosConfigurations = {
+        wodan = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = pkgs.lib.recursiveUpdate specialArgs { systemSettings.hostname = "wodan"; };
+
+          modules = [
+            ./hosts/wodan/configuration.nix
+            nixos-wsl.nixosModules.wsl
+          ];
+        };
         frija = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = pkgs.lib.recursiveUpdate specialArgs { systemSettings.hostname = "frija"; };
