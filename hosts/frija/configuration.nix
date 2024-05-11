@@ -18,5 +18,12 @@
     (import ./win32yank.nix { inherit pkgs; })
   ];
 
+  # Bootloader.
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 10;
+  };
+  boot.loader.efi.canTouchEfiVariables = true;
+
   system.stateVersion = "23.11";
 }
