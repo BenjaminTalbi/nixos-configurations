@@ -36,11 +36,6 @@
         term = "foot";
         editor = "vim";
         theme = "everforest";
-      };
-
-      systemSettings = {
-        timezone = "Europe/Berlin";
-        locale = "en_US.UTF-8";
         font = {
           regular = {
             name = "Iosevka Nerd Font";
@@ -55,6 +50,11 @@
             });
           };
         };
+      };
+
+      systemSettings = {
+        timezone = "Europe/Berlin";
+        locale = "en_US.UTF-8";
       };
 
       extraSpecialArgs = {
