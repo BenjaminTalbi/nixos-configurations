@@ -7,7 +7,7 @@
           "<C-k>" = "cmp.mapping.select_prev_item()";
           "<C-j>" = "cmp.mapping.select_next_item()";
           "<C-e>" = "cmp.mapping.complete()"; # Show completion suggestions
-          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<CR>" = "cmp.mapping.confirm({ select = false})";
           "<C-n>" = "cmp.mapping.scroll_docs(4)";
           "<C-p>" = "cmp.mapping.scroll_docs(-4)";
         };
