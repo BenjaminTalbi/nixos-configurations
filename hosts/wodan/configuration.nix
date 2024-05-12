@@ -6,7 +6,7 @@
    ../../system/core
    ../../system/wm/hyprland.nix
    ../../system/stylix
-   ../../system/boot/virtualbox.nix
+   ../../system/boot/systemd.nix
     ../../system/stylix
   ];
 

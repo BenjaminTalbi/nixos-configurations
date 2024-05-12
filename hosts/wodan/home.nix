@@ -25,7 +25,9 @@
     EDITOR = userSettings.editor;
   };
 
-  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [ 
+    firefox
+  ];
 
   xdg.enable = true;
   xdg.userDirs = {
