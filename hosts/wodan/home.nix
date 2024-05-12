@@ -16,7 +16,7 @@
     ../../home/nixvim
     ../../home/shell
     ../../user/wm/hyprland/hyprland.nix
-    ../../system/stylix
+    ../../user/stylix
   ];
 
   home.stateVersion = "23.11";
