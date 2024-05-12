@@ -25,6 +25,9 @@
 
     # Needed for system wide theming
     stylix.url = "github:danth/stylix";
+
+    # WM
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
   outputs = { self, nixpkgs, nixos-wsl, home-manager, stylix, ... }@inputs:
