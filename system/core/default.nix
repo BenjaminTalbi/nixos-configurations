@@ -3,6 +3,10 @@
 
 {
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.trusted-users = [
+    "root"
+    userSettings.username
+  ];
 
   # Ensure nix flakes are enabled
   nix.package = pkgs.nixFlakes;
