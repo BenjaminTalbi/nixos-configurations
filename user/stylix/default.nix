@@ -59,7 +59,19 @@ in
                 before-sleep "$swaylock_cmd"
   '';
   home.file.".swayidle-stylix".executable = true;
-  home.file.".config/qt5ct/qt5ct.conf".text = pkgs.lib.mkBefore (builtins.readFile ./qt5ct.conf); 
+  home.file.  ".config/qt5ct/colors/oomox-current.conf".source = config.lib.stylix.colors {
+    template = builtins.readFile ./oomox-current.conf.mustache;
+    extension = ".conf";
+  };
+  home.file.".config/Trolltech.conf".source = config.lib.stylix.colors {
+    template = builtins.readFile ./Trolltech.conf.mustache;
+    extension = ".conf";
+  };
+  home.file.".config/kdeglobals".source = config.lib.stylix.colors {
+    template = builtins.readFile ./Trolltech.conf.mustache;
+    extension = "";
+  };
+  home.file.".config/qt5ct/qt5ct.conf".text = pkgs.lib.mkBefore (builtins.readFile ./qt5ct.conf);
   home.file.".config/hypr/hyprpaper.conf".text = ''
     preload = ${config.stylix.image}
     wallpaper = ,${config.stylix.image}
