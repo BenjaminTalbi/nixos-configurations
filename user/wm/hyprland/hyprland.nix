@@ -301,7 +301,7 @@
       text = $TIME
       color = rgb(${config.lib.stylix.colors.base07-rgb-r},${config.lib.stylix.colors.base07-rgb-g}, ${config.lib.stylix.colors.base07-rgb-b})
       font_size = 20
-      font_family = ${systemSettings.font.regular.name} 
+      font_family = ${userSettings.font.regular.name} 
       rotate = 0 # degrees, counter-clockwise
 
       position = 0, 80
