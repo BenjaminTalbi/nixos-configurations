@@ -347,7 +347,7 @@
 
   services.udiskie = {
     enable = true;
-    tray = true;
+    tray = "auto";
   };
   
   # TODO Program launcher
