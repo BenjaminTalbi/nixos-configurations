@@ -2,7 +2,7 @@
 
 let
   themePath = "../../themes/${userSettings.theme}/${userSettings.theme}.yaml";
-  polarity = lib.removeSuffix "\n" builtins.readFile (../../themes/${userSettings.theme}/polarity.txt);
+  polarity = lib.removeSuffix "\n" (builtins.readFile (../../themes/${userSettings.theme}/polarity.txt));
   background.url = builtins.readFile ../../themes/${userSettings.theme}/backgroundurl.txt;
   background.sha256 = builtins.readFile ../../themes/${userSettings.theme}/backgroundSha256.txt;
 in

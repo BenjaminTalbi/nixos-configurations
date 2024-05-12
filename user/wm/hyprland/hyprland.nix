@@ -184,7 +184,6 @@
   };
 
   home.packages = with pkgs; [
-    feh
     killall
     wl-clipboard
     hyprland-protocols
