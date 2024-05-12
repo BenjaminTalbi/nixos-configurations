@@ -6,7 +6,7 @@
    ../../system/core
    ../../system/wm/hyprland.nix
    ../../system/stylix
-   ../../system/boot/grub.nix
+   ../../system/boot/virtualbox.nix
   ];
 
   environment.systemPackages = with pkgs; [
