@@ -14,7 +14,7 @@
       };
       colors = {
         # TODO stylix?
-        alpha = "0.8";
+        alpha = lib.mkForce "0.8";
       };
     };
   };

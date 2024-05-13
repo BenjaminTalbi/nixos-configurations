@@ -41,6 +41,9 @@ in
       desktop = 12;
     };
   };
+  
+  stylix.targets.foot.enable = true;
+  stylix.targets.nixvim.enable = false;
 
   stylix.targets.kde.enable = true;
   stylix.targets.kitty.enable = true;
