@@ -56,7 +56,7 @@
       exec-once = waybar
       exec-once = hypridle
       exec-once = hyprdim -d 450 -s 0.25 -D 0.25 -p
-      exec-once = hyprpaper
+      exec-once = reload-hyprpaper 
       
       env = QT_QPA_PLATFORMTHEME,qt5ct
 
@@ -242,20 +242,6 @@
       vibrancy_darkness = 0.0
     }
 
-    # doesn't work yet
-    image {
-      monitor =
-      path = /home/emmet/.dotfiles/user/wm/hyprland/nix-dark.png
-      size = 150 # lesser side if not 1:1 ratio
-      rounding = -1 # negative values mean circle
-      border_size = 0
-      rotate = 0 # degrees, counter-clockwise
-
-      position = 0, 200
-      halign = center
-      valign = center
-    }
-
     input-field {
       monitor =
       size = 200, 50
@@ -289,7 +275,7 @@
 
     label {
       monitor =
-      text = Moin moin, ${userSettings.name} 
+      text = Hallo, ${userSettings.name} 
       color = rgb(${config.lib.stylix.colors.base07-rgb-r},${config.lib.stylix.colors.base07-rgb-g}, ${config.lib.stylix.colors.base07-rgb-b})
       font_size = 25
       font_family = ${userSettings.font.regular.name} 

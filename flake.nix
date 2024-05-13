@@ -38,7 +38,7 @@
         email = "b.talbi@live.de";
         term = "foot";
         editor = "vim";
-        theme = "everforest";
+        theme = "rose-pine";
         font = {
           regular = {
             name = "FiraCode Nerd Font";

@@ -7,6 +7,14 @@
     ./dbus.nix
   ];
 
+  environment.systemPackages = [
+    (pkgs.writeScriptBin "reload-hyprpaper" ''
+        hyprctl hyprpaper unload all
+        killall hyprpaper
+        hyprpaper &
+    '')
+  ];
+
   services.gnome.gnome-keyring.enable = true;
 
   security.pam.services.login.enableGnomeKeyring = true;
