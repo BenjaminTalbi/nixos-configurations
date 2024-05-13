@@ -21,7 +21,7 @@
     hyprlock
     hyprdim
     hyprpaper   
-    fuzzel
+    tofi
     wev
     grim
     slurp
@@ -86,7 +86,7 @@
         # 1 - Cursor movement will always change focus to the window under the cursor.
         # 2 - Cursor focus will be detached from keyboard focus. Clicking on a window will move keyboard focus to that window.
         # 3 - Cursor focus will be completely separate from keyboard focus. Clicking on a window will not change keyboard focus.
-        follow_mouse = 2
+        follow_mouse = 1
         touchpad {
           natural_scroll = no
         }
@@ -131,7 +131,7 @@
       bind = SUPER CONTROL SHIFT, Q, exit, 
       bind = SUPER, T, togglefloating, 
       # TODO Fuzzle?
-      bind = SUPER, P, exec, killall wofi || wofi --normal-window --show drun
+      bind = SUPER, P, exec, killall tofi || tofi-drun | xargs hyprctl dispatch exec -- 
       bind = SUPER CONTROL, s, exec, hyprpicker
 
       bind = SUPER SHIFT, s, exec, systemctl suspend
@@ -148,7 +148,7 @@
       bindl  =, XF86AudioNext, exec, playerctl next 
       bindl  =, XF86AudioPrev, exec, playerctl previous
       # TODO Fuzzle?
-      bindle =, XF86Search, exec, SUPER, P, exec, killall wofi || wofi --show drun -l
+      bindle =, XF86Search, exec, SUPER, P, exec, killall tofi || tofi-drun | xargs hyprctl dispatch exec -- 
 
       # Movement
       bind = SUPER, j, layoutmsg, cyclenext

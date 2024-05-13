@@ -41,13 +41,35 @@ in
       desktop = 12;
     };
   };
-  
+
   stylix.targets.foot.enable = true;
-  stylix.targets.nixvim.enable = false;
+  stylix.targets.nixvim = {
+    enable = false;
+  };
+
+  stylix.targets.waybar.enable = true;
+  stylix.targets.tofi.enable = true;
+  stylix.targets.zellij.enable = true;
+  stylix.targets.fuzzel.enable = true;
 
   stylix.targets.kde.enable = true;
   stylix.targets.kitty.enable = true;
   stylix.targets.gtk.enable = true;
+
+  home.file.".config/tofi/config".text = '' 
+    width = 100%
+    height = 100%
+    border-width = 0
+    outline-width = 0
+    padding-left = 35%
+    padding-top = 35%
+    result-spacing = 25
+    num-results = 5
+    font = monospace
+    background-color = #000A
+    prompt-color=${config.lib.stylix.colors.base08}
+    selection-color=${config.lib.stylix.colors.base09}
+  '';
   home.file.".swaybg-stylix".text = ''
     #!/bin/sh
     swaybg -m fill -i ${config.stylix.image};
@@ -62,7 +84,7 @@ in
                 before-sleep "$swaylock_cmd"
   '';
   home.file.".swayidle-stylix".executable = true;
-  home.file.  ".config/qt5ct/colors/oomox-current.conf".source = config.lib.stylix.colors {
+  home.file.".config/qt5ct/colors/oomox-current.conf".source = config.lib.stylix.colors {
     template = builtins.readFile ./oomox-current.conf.mustache;
     extension = ".conf";
   };
