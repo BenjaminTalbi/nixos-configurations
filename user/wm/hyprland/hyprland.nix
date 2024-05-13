@@ -12,6 +12,32 @@
     size = 36;
   };
 
+  home.packages = with pkgs; [
+    killall
+    wl-clipboard
+    hyprland-protocols
+    hyprpicker
+    hypridle
+    hyprlock
+    hyprdim
+    hyprpaper   
+    fuzzel
+    wev
+    grim
+    slurp
+    libsForQt5.qt5.qtwayland
+    qt6.qtwayland
+    xdg-utils
+    xdg-desktop-portal
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-hyprland
+    pavucontrol
+    pamixer
+    libappindicator-gtk3 # Needed for udiskie trayer icon
+    playerctl # Media keys
+    udiskie
+  ];
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
@@ -23,7 +49,7 @@
       monitor=DP-1,preferred,auto,auto
 
       # Autostart
-      exec-once = dbus-update-activation-enviroment DISPLAY XAUTHORITY WAYLAND_DISPLAY
+      exec-once = dbus-update-activation-enviroment --systemd DISPLAY XAUTHORITY WAYLAND_DISPLAY
       exec-once = hyprctl setcursor ${config.gtk.cursorTheme.name} ${builtins.toString config.gtk.cursorTheme.size}
       exec-once = nm-applet
       exec-once = blueman-applet
@@ -183,29 +209,6 @@
       bindm = SUPER, mouse:273, resizewindow
     '';
   };
-
-  home.packages = with pkgs; [
-    killall
-    wl-clipboard
-    hyprland-protocols
-    hyprpicker
-    hypridle
-    hyprlock
-    hyprdim
-    hyprpaper   
-    fuzzel
-    wev
-    grim
-    slurp
-    libsForQt5.qt5.qtwayland
-    qt6.qtwayland
-    xdg-utils
-    xdg-desktop-portal
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-    pavucontrol
-    pamixer
-  ];
 
   home.file.".config/hypr/hypridle.conf".text = ''
     general {
