@@ -2,7 +2,7 @@
 {
 
   imports = [
-    ./wayland.nix
+    # ./wayland.nix
     ./pipewire.nix
     ./dbus.nix
   ];

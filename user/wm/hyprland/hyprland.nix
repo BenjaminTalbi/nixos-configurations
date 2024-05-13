@@ -30,6 +30,7 @@
       exec-once = waybar
       exec-once = hypridle
       exec-once = hyprdim -d 450 -s 0.25 -D 0.25 -p
+      exec-once = hyprpaper
       
       env = QT_QPA_PLATFORMTHEME,qt5ct
 
@@ -191,7 +192,7 @@
     hypridle
     hyprlock
     hyprdim
-    swaybg
+    hyprpaper   
     fuzzel
     wev
     grim
@@ -347,7 +348,7 @@
 
   services.udiskie = {
     enable = true;
-    tray = "auto";
+    tray = "always";
   };
   
   # TODO Program launcher

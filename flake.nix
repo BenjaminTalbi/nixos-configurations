@@ -41,9 +41,9 @@
         theme = "everforest";
         font = {
           regular = {
-            name = "Iosevka Nerd Font";
+            name = "FiraCode Nerd Font";
             package = (pkgs.nerdfonts.override {
-              fonts = [ "Iosevka" ];
+              fonts = [ "FiraCode" ];
             });
           };
           monospace = {
