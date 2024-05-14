@@ -3,6 +3,7 @@
 {
   home.username = userSettings.username;
   home.homeDirectory = "/home/${userSettings.username}";
+  news.display = "silent";
 
   programs.home-manager.enable = true;
   programs.git = {

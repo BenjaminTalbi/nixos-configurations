@@ -42,6 +42,10 @@
     swww # Wallpaper TODO hyprpaper replacement?
     libnotify
     dunst # Notifications
+    brightnessctl # For monitor brightness
+    (
+      pkgs.writeScriptBin "osd-vol" (builtins.readFile ./scripts/osd-vol.sh)
+    )
   ];
 
   wayland.windowManager.hyprland = {
@@ -132,6 +136,7 @@
         # beziers
         bezier=easeInOutExpo,0.87,0,0.13,1
         animation=workspaces,1,2,easeInOutExpo,slide
+        animation=windows,1,2,easeInOutExpo,slide
       }
 
       # Core
@@ -139,23 +144,30 @@
       bind = SUPER SHIFT, C, killactive
       bind = SUPER CONTROL SHIFT, Q, exit, 
       bind = SUPER, T, togglefloating, 
-      # TODO Fuzzle?
       bind = SUPER, P, exec, killall tofi || tofi-drun | xargs hyprctl dispatch exec -- 
       bind = SUPER CONTROL, s, exec, hyprpicker
+      bind = SUPER, x, exec, dunstctl close
+      bind = SUPER SHIFT, x, exec, dunstctl close-all
 
       bind = SUPER SHIFT, s, exec, systemctl suspend
       bindl =,switch:on:Lid Switch, exec, loginctl lock-session
       bind = SUPER CTRL, L, exec, loginctl lock-session
       
       # Media Keys
-      bindle =, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+
-      bindle =, XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-
-      bindl  =, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle 
+      # bindl  =, XF86AudioPlay, exec, playerctl play-pause 
+      # bindl  =, XF86AudioNext, exec, playerctl next 
+      # bindl  =, XF86AudioPrev, exec, playerctl previous
+      # bindle =, XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+
+      # bindle =, XF86AudioLowerVolume, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-
+      # bindl  =, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle 
+      bindle =, XF86AudioRaiseVolume, exec, osd-vol volume_up
+      bindle =, XF86AudioLowerVolume, exec, osd-vol volume_down
+      bindl  =, XF86AudioMute, exec, osd-vol volume_mute
       bindle =, XF86MonBrightnessUp, exec, brightnessctl set +1% 
       bindle =, XF86MonBrightnessDown, exec,brightnessctl set 1%-
-      bindl  =, XF86AudioPlay, exec, playerctl play-pause 
-      bindl  =, XF86AudioNext, exec, playerctl next 
-      bindl  =, XF86AudioPrev, exec, playerctl previous
+      bindl  =, XF86AudioPlay, exec, osd-vol play_pause 
+      bindl  =, XF86AudioNext, exec, osd-vol next_track 
+      bindl  =, XF86AudioPrev, exec, osd-vol prev_track
       # TODO Fuzzle?
       bindle =, XF86Search, exec, SUPER, P, exec, killall tofi || tofi-drun | xargs hyprctl dispatch exec -- 
 
@@ -331,6 +343,35 @@
         modules-center = [ "clock" ];
         modules-right = [ "idle_inhibitor" "tray" ];
 
+        "hyprland/workspaces" = {
+          format = "{icon}";
+          format-icons = {
+            active = "";
+            default = "";
+            empty = "";
+            persistent = "";
+            special = "";
+            urgent = "";
+          };
+          persistent-workspaces = {
+            "*" = 6;
+          };
+          format-window-separator = " ";
+          window-rewrite-default = "";
+          window-rewrite = {
+            "title<.*youtube.*>" = ""; # Windows whose titles contain "youtube"
+            "class<firefox>" = "󰈹"; # Windows whose classes are "firefox"
+            "class<firefox> title<.*github.*>" = ""; # Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
+            "class<foot>" = "";
+            "class<foot> title<.*vim.*>" = "";
+            "code" = "󰨞";
+            "discord" = "";
+            "org.gnome.Nautilus" = "";
+            "class<pavucontrol>" = "󱡫";
+            "class<org.gnome.Loupe>" = "󰋯";
+            "class<Google-chrome>" = "";
+          };
+        };
         "idle_inhibitor" = {
           format = "{icon}";
           format-icons = {
@@ -342,6 +383,37 @@
         # TODO Add rest... https://github.com/librephoenix/nixos-config/blob/5dcc42987580a56a979a124c372156c45a33e504/user/wm/hyprland/hyprland.nix#L617
       };
     };
+    style = ''
+      @define-color base00 #${config.lib.stylix.colors.base00}; /* Default Background */ 
+      @define-color base01 #${config.lib.stylix.colors.base01}; /* Lighter Background (Used for status bars, line number and folding marks) */ 
+      @define-color base02 #${config.lib.stylix.colors.base02}; /* Selection Background */ 
+      @define-color base03 #${config.lib.stylix.colors.base03}; /* Comments, Invisibles, Line Highlighting */ 
+      @define-color base04 #${config.lib.stylix.colors.base04}; /* Dark Foreground (Used for status bars) */ 
+      @define-color base05 #${config.lib.stylix.colors.base05}; /* Default Foreground, Caret, Delimiters, Operators */ 
+      @define-color base06 #${config.lib.stylix.colors.base06}; /* Light Foreground (Not often used) */ 
+      @define-color base07 #${config.lib.stylix.colors.base07}; /* Light Background (Not often used) */ 
+      @define-color base08 #${config.lib.stylix.colors.base08}; /* Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */ 
+      @define-color base09 #${config.lib.stylix.colors.base09}; /* Integers, Boolean, Constants, XML Attributes, Markup Link Url */ 
+      @define-color base0A #${config.lib.stylix.colors.base0A}; /* Classes, Markup Bold, Search Text Background */ 
+      @define-color base0B #${config.lib.stylix.colors.base0B}; /* Strings, Inherited Class, Markup Code, Diff Inserted */ 
+      @define-color base0C #${config.lib.stylix.colors.base0C}; /* Support, Regular Expressions, Escape Characters, Markup Quotes */ 
+      @define-color base0D #${config.lib.stylix.colors.base0D}; /* Functions, Methods, Attribute IDs, Headings */ 
+      @define-color base0E #${config.lib.stylix.colors.base0E}; /* Keywords, Storage, Selector, Markup Italic, Diff Changed */ 
+      @define-color base0F #${config.lib.stylix.colors.base0F}; /* Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */ 
+
+      @define-color warning  #f6c177; 
+      @define-color critical #ff0000;
+
+      /* Animations */
+      @keyframes blink-warning { 70% { color: white; } to { color: @warning; } }
+      @keyframes blink-critical { 70% { color: white; } to { color: @critical; } }
+
+      /* Base */
+      * {
+          font-family: FontAwesome, ${userSettings.font.regular.name};
+          font-size: 20px;
+      }
+    '';
   };
 
   services.udiskie = {
@@ -361,6 +433,12 @@
         corner_radius = 10;
         padding = 30;
         horizontal_padding = 15;
+        progress_bar_max_width = 400;
+        progress_bar_min_width = 400;
+        progress_bar_height = 10;
+        progress_bar_frame_width = 1;
+        progress_bar_corner_radius = 5;
+        highlight = "#FFFFFF";
       };
     };
   };
