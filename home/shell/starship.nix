@@ -5,14 +5,9 @@
       enable = true;
       settings = {
         add_newline = false;
-        format = ''
-          $directory
-          $nix_shell$character
-        '';
-        right_format = "$all";
         aws.disabled = true;
         character = rec {
-          error_symbol = "[💥](red)";
+          error_symbol = "[](red)";
           vimcmd_replace_symbol = "[](hotpink)";
           vimcmd_replace_one_symbol = vimcmd_replace_symbol;
           vimcmd_visual_symbol = vimcmd_replace_symbol;
