@@ -341,27 +341,34 @@
 
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];
-        modules-right = [ "idle_inhibitor" "tray" ];
+        modules-right = [
+          "idle_inhibitor"
+          "wireplumber"
+          "backlight"
+          "disk"
+          "battery"
+          "tray"
+        ];
 
         "hyprland/workspaces" = {
-          format = "{icon}";
+          format = "{icon} {windows} ";
           format-icons = {
-            active = "";
-            default = "";
-            empty = "";
-            persistent = "";
+            on-scroll-up = "hyprctl dispatch workspaces e+1";
+            on-scroll-down = "hyprctl dispatch workspaces e-1";
+            on-click = "activate";
+            active = "";
+            default = "";
+            empty = "";
+            persistent = "";
             special = "";
-            urgent = "";
-          };
-          persistent-workspaces = {
-            "*" = 6;
+            urgent = "";
           };
           format-window-separator = " ";
-          window-rewrite-default = "";
+          window-rewrite-default = "";
           window-rewrite = {
-            "title<.*youtube.*>" = ""; # Windows whose titles contain "youtube"
-            "class<firefox>" = "󰈹"; # Windows whose classes are "firefox"
-            "class<firefox> title<.*github.*>" = ""; # Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
+            "title<.*youtube.*>" = "";
+            "class<firefox>" = "󰈹";
+            "class<firefox> title<.*github.*>" = "";
             "class<foot>" = "";
             "class<foot> title<.*vim.*>" = "";
             "code" = "󰨞";
@@ -379,40 +386,284 @@
             deactivated = "󰾪";
           };
         };
-
+        privacy = {
+          icon-spacing = 4;
+          icon-size = 18;
+          transition-duration = 250;
+          modules = [
+            {
+              type = "screenshare";
+              tooltip = true;
+              tooltip-icon-size = 24;
+            }
+            {
+              type = "audio-out";
+              tooltip = true;
+              tooltip-icon-size = 24;
+            }
+            {
+              type = "audio-in";
+              tooltip = true;
+              tooltip-icon-size = 24;
+            }
+          ];
+        };
+        backlight = {
+          device = "intel_backlight";
+          format = "{icon} {percent}%";
+          format-icons = [ "" "󱎖" "" ];
+          on-scroll-up = "brightnessctl set +1%";
+          on-scroll-down = "brightnessctl set 1%-";
+          on-click = "brightnessctl set +10%";
+          on-click-right = "brightnessctl set 10%-";
+          tooltip-format = "{percent}%";
+        };
+        battery = {
+          states = {
+            warning = 33;
+            critical = 15;
+          };
+          format = "{icon}  {capacity}%";
+          format-icons = [ "" "" "" "" "" ];
+          tooltip-format = "Capacity: {capacity}%\n{timeTo}\nCurrent draw: {power}󱐋";
+        };
+        # TODO work on calendar
+        clock = {
+          format = "{:%R %F}";
+          tooltip-format = "<tt><small>{calendar}</small></tt>";
+          calendar = {
+            mode = "month";
+          };
+          actions = {
+            on-click = "shift_up";
+            on-click-right = "shift_down";
+          };
+        };
+        cpu = {
+          format = "{max_frequency}% ";
+          tooltip-format = "{icon0} {icon1} {icon2} {icon3} {icon4} {icon5} {icon6} {icon7} {icon8} {icon9} {icon10} {icon11}";
+        };
+        disk = {
+          interval = 120;
+          #format = "";
+          format = " {free}";
+          tooltip-format = "{free}";
+        };
+        network = {
+          format-wifi = "";
+          format-ethernet = "󰈁";
+          format-disconnected = "󰈂";
+          tooltip-format = "{essid}";
+        };
+        wireplumber = {
+          format = "{icon} {volume}%";
+          format-icons = [ "" "" "" ];
+          format-muted = "󰝟 ";
+          on-scroll-up = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+";
+          on-scroll-down = "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-";
+          on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
+          max-volume = 150;
+          scroll-step = 0.2;
+          tooltip-format = "{node_name} {volume}%";
+        };
+        tray = {
+          icon-size = 18;
+          spacing = 3;
+        };
         # TODO Add rest... https://github.com/librephoenix/nixos-config/blob/5dcc42987580a56a979a124c372156c45a33e504/user/wm/hyprland/hyprland.nix#L617
       };
     };
     style = ''
-      @define-color base00 #${config.lib.stylix.colors.base00}; /* Default Background */ 
-      @define-color base01 #${config.lib.stylix.colors.base01}; /* Lighter Background (Used for status bars, line number and folding marks) */ 
-      @define-color base02 #${config.lib.stylix.colors.base02}; /* Selection Background */ 
-      @define-color base03 #${config.lib.stylix.colors.base03}; /* Comments, Invisibles, Line Highlighting */ 
-      @define-color base04 #${config.lib.stylix.colors.base04}; /* Dark Foreground (Used for status bars) */ 
-      @define-color base05 #${config.lib.stylix.colors.base05}; /* Default Foreground, Caret, Delimiters, Operators */ 
-      @define-color base06 #${config.lib.stylix.colors.base06}; /* Light Foreground (Not often used) */ 
-      @define-color base07 #${config.lib.stylix.colors.base07}; /* Light Background (Not often used) */ 
-      @define-color base08 #${config.lib.stylix.colors.base08}; /* Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */ 
-      @define-color base09 #${config.lib.stylix.colors.base09}; /* Integers, Boolean, Constants, XML Attributes, Markup Link Url */ 
-      @define-color base0A #${config.lib.stylix.colors.base0A}; /* Classes, Markup Bold, Search Text Background */ 
-      @define-color base0B #${config.lib.stylix.colors.base0B}; /* Strings, Inherited Class, Markup Code, Diff Inserted */ 
-      @define-color base0C #${config.lib.stylix.colors.base0C}; /* Support, Regular Expressions, Escape Characters, Markup Quotes */ 
-      @define-color base0D #${config.lib.stylix.colors.base0D}; /* Functions, Methods, Attribute IDs, Headings */ 
-      @define-color base0E #${config.lib.stylix.colors.base0E}; /* Keywords, Storage, Selector, Markup Italic, Diff Changed */ 
-      @define-color base0F #${config.lib.stylix.colors.base0F}; /* Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */ 
+        @define-color base00 #${config.lib.stylix.colors.base00}; /* Default Background */ 
+        @define-color base01 #${config.lib.stylix.colors.base01}; /* Lighter Background (Used for status bars, line number and folding marks) */ 
+        @define-color base02 #${config.lib.stylix.colors.base02}; /* Selection Background */ 
+        @define-color base03 #${config.lib.stylix.colors.base03}; /* Comments, Invisibles, Line Highlighting */ 
+        @define-color base04 #${config.lib.stylix.colors.base04}; /* Dark Foreground (Used for status bars) */ 
+        @define-color base05 #${config.lib.stylix.colors.base05}; /* Default Foreground, Caret, Delimiters, Operators */ 
+        @define-color base06 #${config.lib.stylix.colors.base06}; /* Light Foreground (Not often used) */ 
+        @define-color base07 #${config.lib.stylix.colors.base07}; /* Light Background (Not often used) */ 
+        @define-color base08 #${config.lib.stylix.colors.base08}; /* Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted */ 
+        @define-color base09 #${config.lib.stylix.colors.base09}; /* Integers, Boolean, Constants, XML Attributes, Markup Link Url */ 
+        @define-color base0A #${config.lib.stylix.colors.base0A}; /* Classes, Markup Bold, Search Text Background */ 
+        @define-color base0B #${config.lib.stylix.colors.base0B}; /* Strings, Inherited Class, Markup Code, Diff Inserted */ 
+        @define-color base0C #${config.lib.stylix.colors.base0C}; /* Support, Regular Expressions, Escape Characters, Markup Quotes */ 
+        @define-color base0D #${config.lib.stylix.colors.base0D}; /* Functions, Methods, Attribute IDs, Headings */ 
+        @define-color base0E #${config.lib.stylix.colors.base0E}; /* Keywords, Storage, Selector, Markup Italic, Diff Changed */ 
+        @define-color base0F #${config.lib.stylix.colors.base0F}; /* Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?> */ 
 
-      @define-color warning  #f6c177; 
-      @define-color critical #ff0000;
+        @define-color warning  #f6c177; 
+        @define-color critical #ff0000;
 
-      /* Animations */
-      @keyframes blink-warning { 70% { color: white; } to { color: @warning; } }
-      @keyframes blink-critical { 70% { color: white; } to { color: @critical; } }
+        /* Animations */
+        @keyframes blink-warning { 70% { color: white; } to { color: @warning; } }
+        @keyframes blink-critical { 70% { color: white; } to { color: @critical; } }
 
-      /* Base */
-      * {
+        /* Base */
+        * {
           font-family: FontAwesome, ${userSettings.font.regular.name};
           font-size: 20px;
+          border: none;
+          border-radius: 0;
+          min-height: 0;
+          margin: 0;
+          padding: 0;
+        }
+     
+       /* Reset all styles */
+      * {
+          border: none;
+          border-radius: 0;
+          min-height: 0;
+          margin: 1px ;
+          padding: 0;
       }
+
+      /* The whole bar */
+      #waybar {
+          background-color: @base00;
+          font-size: 16px;
+          border-radius: 4px;
+      }
+
+      .modules-left, .modules-right {
+          background-color: @base00;
+      }
+
+      /* Every modules */
+      #backlight,
+      #battery,
+      #bluetooth,
+      #cava,
+      #clock,
+      #cpu,
+      #custom,
+      #disk,
+      #dwl,
+      #gamemode,
+      #group,
+      #idle inhibitor,
+      #image,
+      #jack,
+      #keyboard state,
+      #language,
+      #memory,
+      #mpd,
+      #mpris,
+      #network,
+      #pulseaudio,
+      #sndio,
+      #river,
+      #temperature,
+      #taskbar,
+      #upower,
+      #wireplumber,
+      #workspaces,
+      #user {
+          /*
+          margin: .25rem 0.5rem;
+          min-width: .3rem;
+          */
+          padding: .25rem .75rem;
+       }
+
+      #tray {
+          margin-right: 0.5rem;
+      }
+      /* -----------------------------------------------------------------------------
+       * Modules styles
+       * -------------------------------------------------------------------------- */
+
+      #battery {
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+      }
+
+      #battery.warning {
+          color: @warning;
+      }
+
+      #battery.critical {
+          color: @critical;
+      }
+
+      #battery.warning.discharging {
+          animation-name: blink-warning;
+          animation-duration: 3s;
+      }
+
+      #battery.critical.discharging {
+          animation-name: blink-critical;
+          animation-duration: 2s;
+      }
+
+      #cpu.warning {
+          color: @warning;
+      }
+
+      #cpu.critical {
+          color: @critical;
+      }
+
+      #memory {
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+          animation-direction: alternate;
+      }
+
+      #memory.warning {
+          color: @warning;
+       }
+
+      #memory.critical {
+          color: red;
+          animation-name: blink-critical;
+          animation-duration: 2s;
+      }
+
+      #network.disconnected {
+          color: @warning;
+      }
+
+      #pulseaudio {
+          /* padding-top:6px; */
+      }
+
+      #pulseaudio.muted {
+          color: @base03;
+      }
+
+      #temperature.critical {
+          color: red;
+      }
+
+      #window {
+          font-weight: bold;
+      }
+
+      #workspaces {
+          font-size: 20px;
+      }
+
+      #workspaces button {
+          margin: 0 .2rem;
+          padding: 0px;
+      }
+
+      #workspaces button.active {
+          color: @base09;
+      }
+
+      #workspaces button.visible { }
+
+      #workspaces button.urgent {
+          animation-name: blink-critical;
+          animation-duration: 2s;
+      }
+
+      #workspaces button.persistent { }
+
+      #workspaces button.hidden { }
     '';
   };
 

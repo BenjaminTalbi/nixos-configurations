@@ -47,7 +47,7 @@ in
     enable = false;
   };
 
-  stylix.targets.waybar.enable = true;
+  stylix.targets.waybar.enable = false;
   stylix.targets.tofi.enable = true;
   stylix.targets.dunst.enable = true;
   stylix.targets.zellij.enable = true;
