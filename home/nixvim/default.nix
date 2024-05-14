@@ -72,7 +72,7 @@
       isfname = "@,48-57,/,.,-,_,+,,,#,$,%,~,=,@-@";
       updatetime = 50;
       showtabline = 0;
-      cursorline = false;
+      cursorline = true;
     };
 
     globals = {
