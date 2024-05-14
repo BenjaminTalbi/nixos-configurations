@@ -49,6 +49,7 @@ in
 
   stylix.targets.waybar.enable = true;
   stylix.targets.tofi.enable = true;
+  stylix.targets.dunst.enable = true;
   stylix.targets.zellij.enable = true;
   stylix.targets.fuzzel.enable = true;
 

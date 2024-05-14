@@ -20,11 +20,9 @@
     hypridle
     hyprlock
     hyprdim
-    hyprpaper   
-    tofi
-    wev
-    grim
-    slurp
+    hyprpaper # Wallpaper
+    tofi # Program launcher
+    wev # Key utility for checking keycodes
     libsForQt5.qt5.qtwayland
     qt6.qtwayland
     xdg-utils
@@ -35,7 +33,15 @@
     pamixer
     libappindicator-gtk3 # Needed for udiskie trayer icon
     playerctl # Media keys
-    udiskie
+    udiskie # USB automounting
+    grim
+    slurp
+    wayshot # grim + slurp screenshots
+    loupe # Image viewer
+    gnome.nautilus # File browser
+    swww # Wallpaper TODO hyprpaper replacement?
+    libnotify
+    dunst # Notifications
   ];
 
   wayland.windowManager.hyprland = {
@@ -63,7 +69,7 @@
       general {
         layout = master
         resize_on_border = true
-        border_size = 4
+        border_size = 2
         gaps_in = 7
         gaps_out = 7
 
@@ -100,7 +106,7 @@
       misc {
         disable_hyprland_logo = true
         disable_splash_rendering = true
-
+        col.splash = 0x00000000
       }
 
       cursor {
@@ -123,6 +129,9 @@
       animations {
         enabled = true
         # TODO when in VM
+        # beziers
+        bezier=easeInOutExpo,0.87,0,0.13,1
+        animation=workspaces,1,2,easeInOutExpo,slide
       }
 
       # Core
@@ -339,7 +348,20 @@
     enable = true;
     tray = "always";
   };
-  
-  # TODO Program launcher
-  # TODO Notification Deamon
+
+  services.dunst = {
+    enable = true;
+    settings = {
+      global = {
+        width = 450;
+        frame_width = 1;
+        notification_limit = 10;
+        origin = "top-right";
+        progress_bar = true;
+        corner_radius = 10;
+        padding = 30;
+        horizontal_padding = 15;
+      };
+    };
+  };
 } 
