@@ -158,6 +158,18 @@
         mode = "n";
         options.desc = "Go to file explorer";
       }
+      {
+        action = "<cmd>cprev<CR>";
+        key = "<C-k>";
+        mode = "n";
+        options.desc = "Next item in quick fix list";
+      }
+      {
+        action = "<cmd>cnext<CR>";
+        key = "<C-j>";
+        mode = "n";
+        options.desc = "Next item in quick fix list";
+      }
     ];
 
     plugins = {

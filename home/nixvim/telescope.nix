@@ -16,8 +16,12 @@
               __raw = "${actions}.move_selection_previous";
               desc = "Move to previous selection";
             };
-            "<C-q>" = {
+            "<C-s>" = {
               __raw = "${actions}.send_selected_to_qflist + ${actions}.open_qflist";
+              desc = "Send to quick fix list";
+            };
+            "<C-q>" = {
+              __raw = "${actions}.send_to_qflist + ${actions}.open_qflist";
               desc = "Send to quick fix list";
             };
           };
