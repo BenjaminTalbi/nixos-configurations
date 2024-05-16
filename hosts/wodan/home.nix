@@ -26,9 +26,11 @@
     EDITOR = userSettings.editor;
   };
 
-  home.packages = with pkgs; [ 
+  home.packages = with pkgs; [
     firefox
     discord
+
+    nodePackages_latest.nodejs
   ];
 
   xdg.enable = true;
