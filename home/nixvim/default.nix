@@ -160,13 +160,13 @@
       }
       {
         action = "<cmd>cprev<CR>";
-        key = "<C-k>";
+        key = "<C-p>";
         mode = "n";
         options.desc = "Next item in quick fix list";
       }
       {
         action = "<cmd>cnext<CR>";
-        key = "<C-j>";
+        key = "<C-n>";
         mode = "n";
         options.desc = "Next item in quick fix list";
       }
