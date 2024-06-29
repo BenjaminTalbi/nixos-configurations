@@ -4,7 +4,7 @@
     starship = {
       enable = true;
       settings = {
-        add_newline = false;
+        add_newline = true;
         aws.disabled = true;
         character = rec {
           error_symbol = "[](red)";
@@ -17,7 +17,7 @@
         directory = {
           truncation_length = 5;
           truncation_symbol = "../";
-          home_symbol = "";
+          # home_symbol = "";
         };
         # TODO [direnv module](https://starship.rs/config/#direnv)
         git_branch = {
